@@ -1,3 +1,5 @@
+[![Build Status](https://api.travis-ci.org/intelsdi-x/snap-plugin-collector-mongodb.svg)](https://travis-ci.org/intelsdi-x/snap-plugin-collector-mongodb )
+[![Go Report Card](http://goreportcard.com/badge/intelsdi-x/snap-plugin-collector-mongodb)](http://goreportcard.com/report/intelsdi-x/snap-plugin-collector-mongodb)
 
 This plugin collects metrics from MongoDB database.  
 
@@ -170,3 +172,7 @@ Snap, along with this plugin, is an Open Source software released under the Apac
 
 ## Acknowledgements
 * Author: [@Marcin Spoczynski](https://github.com/sandlbn/)
+
+This software has been contributed by MIKELANGELO, a Horizon 2020 project co-funded by the European Union. https://www.mikelangelo-project.eu/
+## Thank You
+And **thank you!** Your contribution, through code and participation, is incredibly important to us.
