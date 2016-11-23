@@ -20,7 +20,7 @@
 
 # Support travis.ci environment matrix:
 TEST_TYPE="${TEST_TYPE:-$1}"
-UNIT_TEST="${UNIT_TEST:-"gofmt goimports go_test go_cover"}"
+UNIT_TEST="${UNIT_TEST:-"gofmt goimports go_vet go_test go_cover"}"
 TEST_K8S="${TEST_K8S:-0}"
 
 set -e
@@ -84,7 +84,8 @@ elif [[ $TEST_TYPE == "medium" ]]; then
   if [[ -f "${__dir}/medium.sh" ]]; then
     . "${__dir}/medium.sh"
   else
-    UNIT_TEST="go_test"
+    UNIT_TEST="go_test go_cover"
+    echo "mode: count" > profile.cov
     test_unit
   fi
 elif [[ $TEST_TYPE == "large" ]]; then
