@@ -94,40 +94,47 @@ $ snapctl plugin load snap-plugin-publisher-file
 
 Create a task manifest file  (exemplary files in [examples/tasks/] (examples/tasks/)):
 ```yaml
----
-  version: 1
-  schedule:
-    type: "simple"
-    interval: "1s"
-  max-failures: 10
-  workflow:
-    collect:
-      metrics:
-         /intel/mongodb/opscounters/insert: {}
-         /intel/mongodb/opscounters/query: {}
-         /intel/mongodb/opscounters/update: {}
-         /intel/mongodb/opscounters/delete: {}
-         /intel/mongodb/opscounters/getmore: {}
-         /intel/mongodb/opscounters/command: {}
-         /intel/mongodb/tmalloc/current_allocated_bytes: {}
-         /intel/mongodb/tmalloc/heap_size: {}
-         /intel/mongodb/tmalloc/pageheap_free_bytes: {}
-         /intel/mongodb/tmalloc/pageheap_unmapped_bytes: {}
-         /intel/mongodb/tmalloc/max_total_thread_cache_bytes: {}
-         /intel/mongodb/tmalloc/current_total_thread_cache_bytes: {}
-         /intel/mongodb/tmalloc/total_free_bytes: {}
-         /intel/mongodb/tmalloc/central_cache_free_bytes: {}
-         /intel/mongodb/tmalloc/transfer_cache_free_bytes: {}
-         /intel/mongodb/tmalloc/thread_cache_free_bytes: {}
-         /intel/mongodb/tmalloc/aggressive_memory_decommit: {}
-      publish:
-        - plugin_name: "file"
-          config:
-            file: "/tmp/mongodb_metrics.log"
+--- 
+max-failures: 10
+schedule: 
+  interval: 1s
+  type: simple
+version: 1
+workflow: 
+  collect: 
+    config: 
+      /intel/mongodb: 
+        uri: "localhost:27017"
+        username: ""
+        password: ""
+    metrics: 
+      /intel/mongodb/opscounters/command: {}
+      /intel/mongodb/opscounters/delete: {}
+      /intel/mongodb/opscounters/getmore: {}
+      /intel/mongodb/opscounters/insert: {}
+      /intel/mongodb/opscounters/query: {}
+      /intel/mongodb/opscounters/update: {}
+      /intel/mongodb/tmalloc/aggressive_memory_decommit: {}
+      /intel/mongodb/tmalloc/central_cache_free_bytes: {}
+      /intel/mongodb/tmalloc/current_allocated_bytes: {}
+      /intel/mongodb/tmalloc/current_total_thread_cache_bytes: {}
+      /intel/mongodb/tmalloc/heap_size: {}
+      /intel/mongodb/tmalloc/max_total_thread_cache_bytes: {}
+      /intel/mongodb/tmalloc/pageheap_free_bytes: {}
+      /intel/mongodb/tmalloc/pageheap_unmapped_bytes: {}
+      /intel/mongodb/tmalloc/thread_cache_free_bytes: {}
+      /intel/mongodb/tmalloc/total_free_bytes: {}
+      /intel/mongodb/tmalloc/transfer_cache_free_bytes: {}
+    publish: 
+      - 
+        config: 
+          file: /tmp/mongodb_metrics
+        plugin_name: file
+
 ```
 Download an [example task file](https://github.com/intelsdi-x/snap-plugin-collector-mongodb/blob/master/examples/tasks/) and load it:
 ```
-$ curl -sfLO https://raw.githubusercontent.com/intelsdi-x/snap-plugin-collector-mongodb/master/examples/tasks/mongodbb-file.json
+$ curl -sfLO https://raw.githubusercontent.com/intelsdi-x/snap-plugin-collector-mongodb/master/examples/tasks/mongodb-file.yaml
 $ snapctl task create -t mongodb-file.json
 Using task manifest to create task
 Task created
@@ -155,7 +162,7 @@ ID: 480323af-15b0-4af8-a526-eb2ca6d8ae67
 ### Roadmap
 There isn't a current roadmap for this plugin, but it is in active development. As we launch this plugin, we do not have any outstanding requirements for the next release. 
 
-If you have a feature request, please add it as an [issue](https://github.com/intelsdi-x/kubesnap-plugin-collector-mongodb/issues/new) and/or submit a [pull request](https://github.com/intelsdi-x/kubesnap-plugin-collector-mongodb/pulls).
+If you have a feature request, please add it as an [issue](https://github.com/intelsdi-x/snap-plugin-collector-mongodb/issues/new) and/or submit a [pull request](https://github.com/intelsdi-x/snap-plugin-collector-mongodb/pulls).
 
 ## Community Support
 This repository is one of **many** plugins in **snap**, a powerful telemetry framework. See the full project at http://github.com/intelsdi-x/snap.
