@@ -34,7 +34,7 @@ All OSs currently supported by snap:
 
 #### Download the plugin binary:
 
-You can get the pre-built binaries for your OS and architecture from the plugin's [GitHub Releases](https://github.com/intelsdi-x/snap-plugin-collector-mongodb/releasess) page. Download the plugin from the latest release and load it into `snapd` (`/opt/snap/plugins` is the default location for snap packages).
+You can get the pre-built binaries for your OS and architecture from the plugin's [GitHub Releases](https://github.com/intelsdi-x/snap-plugin-collector-mongodb/releasess) page. Download the plugin from the latest release and load it into `snapteld` (`/opt/snap/plugins` is the default location for snap packages).
 
 
 #### To build the plugin binary:
@@ -63,7 +63,7 @@ This builds the plugin in `./build/`
 This collector gathers metrics from mongodb server status command. 
 
 ### Global config
-Global configuration files are described in [snap's documentation](https://github.com/intelsdi-x/snap/blob/master/docs/SNAPD_CONFIGURATION.md). You have to add `"mongodb"` section with following entries:
+Global configuration files are described in [snap's documentation](https://github.com/intelsdi-x/snap/blob/master/docs/snapteld_CONFIGURATION.md). You have to add `"mongodb"` section with following entries:
 
  - `"uri"` -  it's hostname and port pair in format `"hostname:port"`,  as default set to `"localhost:27017"`. 
  - `"username"` - username if authentification is enabled
@@ -82,15 +82,15 @@ Example of running snap mongodb collector and writing data to file.
 Ensure [snap daemon is running](https://github.com/intelsdi-x/snap#running-snap):
 * initd: `service snap-telemetry start`
 * systemd: `systemctl start snap-telemetry`
-* command line: `snapd -l 1 -t 0 &`
+* command line: `snapteld -l 1 -t 0 &`
 
 Download and load snap plugins:
 ```
 $ wget http://snap.ci.snap-telemetry.io/plugins/snap-plugin-collector-mongodb/latest/linux/x86_64/snap-plugin-collector-mongodb
 $ wget http://snap.ci.snap-telemetry.io/plugins/snap-plugin-publisher-file/latest/linux/x86_64/snap-plugin-publisher-file
 $ chmod 755 snap-plugin-*
-$ snapctl plugin load snap-plugin-collector-mongodb
-$ snapctl plugin load snap-plugin-publisher-file
+$ snaptel plugin load snap-plugin-collector-mongodb
+$ snaptel plugin load snap-plugin-publisher-file
 
 Create a task manifest file  (exemplary files in [examples/tasks/] (examples/tasks/)):
 ```yaml
@@ -135,7 +135,7 @@ workflow:
 Download an [example task file](https://github.com/intelsdi-x/snap-plugin-collector-mongodb/blob/master/examples/tasks/) and load it:
 ```
 $ curl -sfLO https://raw.githubusercontent.com/intelsdi-x/snap-plugin-collector-mongodb/master/examples/tasks/mongodb-file.yaml
-$ snapctl task create -t mongodb-file.json
+$ snaptel task create -t mongodb-file.json
 Using task manifest to create task
 Task created
 ID: 480323af-15b0-4af8-a526-eb2ca6d8ae67
@@ -143,16 +143,16 @@ Name: Task-480323af-15b0-4af8-a526-eb2ca6d8ae67
 State: Running
 ```
 
-See realtime output from `snapctl task watch <task_id>` (CTRL+C to exit)
+See realtime output from `snaptel task watch <task_id>` (CTRL+C to exit)
 ```
-$ snapctl task watch 480323af-15b0-4af8-a526-eb2ca6d8ae67
+$ snaptel task watch 480323af-15b0-4af8-a526-eb2ca6d8ae67
 ```
 
 This data is published to a file `/tmp/mongodb_metrics` per task specification
 
 Stop task:
 ```
-$ snapctl task stop 480323af-15b0-4af8-a526-eb2ca6d8ae67
+$ snaptel task stop 480323af-15b0-4af8-a526-eb2ca6d8ae67
 Task stopped:
 ID: 480323af-15b0-4af8-a526-eb2ca6d8ae67
 ```
