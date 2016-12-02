@@ -1,30 +1,36 @@
----
-  version: 1
-  schedule:
-    type: "simple"
-    interval: "1s"
-  max-failures: 10
-  workflow:
-    collect:
-      metrics:
-         /intel/mongodb/opscounters/insert: {}
-         /intel/mongodb/opscounters/query: {}
-         /intel/mongodb/opscounters/update: {}
-         /intel/mongodb/opscounters/delete: {}
-         /intel/mongodb/opscounters/getmore: {}
-         /intel/mongodb/opscounters/command: {}
-         /intel/mongodb/tmalloc/current_allocated_bytes: {}
-         /intel/mongodb/tmalloc/heap_size: {}
-         /intel/mongodb/tmalloc/pageheap_free_bytes: {}
-         /intel/mongodb/tmalloc/pageheap_unmapped_bytes: {}
-         /intel/mongodb/tmalloc/max_total_thread_cache_bytes: {}
-         /intel/mongodb/tmalloc/current_total_thread_cache_bytes: {}
-         /intel/mongodb/tmalloc/total_free_bytes: {}
-         /intel/mongodb/tmalloc/central_cache_free_bytes: {}
-         /intel/mongodb/tmalloc/transfer_cache_free_bytes: {}
-         /intel/mongodb/tmalloc/thread_cache_free_bytes: {}
-         /intel/mongodb/tmalloc/aggressive_memory_decommit: {}
-      publish:
-        - plugin_name: "file"
-          config:
-            file: "/tmp/mongodb_metrics.log"
+--- 
+max-failures: 10
+schedule: 
+  interval: 1s
+  type: simple
+version: 1
+workflow: 
+  collect: 
+    config: 
+      /intel/mongodb: 
+        uri: "localhost:27017"
+        username: ""
+        password: ""
+    metrics: 
+      /intel/mongodb/opscounters/command: {}
+      /intel/mongodb/opscounters/delete: {}
+      /intel/mongodb/opscounters/getmore: {}
+      /intel/mongodb/opscounters/insert: {}
+      /intel/mongodb/opscounters/query: {}
+      /intel/mongodb/opscounters/update: {}
+      /intel/mongodb/tmalloc/aggressive_memory_decommit: {}
+      /intel/mongodb/tmalloc/central_cache_free_bytes: {}
+      /intel/mongodb/tmalloc/current_allocated_bytes: {}
+      /intel/mongodb/tmalloc/current_total_thread_cache_bytes: {}
+      /intel/mongodb/tmalloc/heap_size: {}
+      /intel/mongodb/tmalloc/max_total_thread_cache_bytes: {}
+      /intel/mongodb/tmalloc/pageheap_free_bytes: {}
+      /intel/mongodb/tmalloc/pageheap_unmapped_bytes: {}
+      /intel/mongodb/tmalloc/thread_cache_free_bytes: {}
+      /intel/mongodb/tmalloc/total_free_bytes: {}
+      /intel/mongodb/tmalloc/transfer_cache_free_bytes: {}
+    publish: 
+      - 
+        config: 
+          file: /tmp/mongodb_metrics
+        plugin_name: file

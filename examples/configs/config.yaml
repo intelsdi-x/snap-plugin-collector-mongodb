@@ -1,0 +1,7 @@
+control:
+  plugins:
+    collector:
+      mongodb:
+        uri: "localhost:27017"
+        username: "admin"
+        password: ""
