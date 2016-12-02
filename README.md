@@ -3,7 +3,7 @@
 
 This plugin collects metrics from MongoDB database.  
 
-It's used in the [Snap framework](http://github.com:intelsdi-x/snap).
+It's used in the [Snap framework](http://github.com/intelsdi-x/snap).
 
 1. [Getting Started](#getting-started)
   * [System Requirements](#system-requirements)
@@ -25,7 +25,7 @@ It's used in the [Snap framework](http://github.com:intelsdi-x/snap).
 * [golang 1.7+](https://golang.org/dl/)  - needed only for building
 * [mongodb 3.2.x](https://mongodb.com/)
 ### Operating systems
-All OSs currently supported by snap:
+All OSs currently supported by Snap:
 * Linux/amd64
 * Darwin/amd64
 
@@ -34,7 +34,7 @@ All OSs currently supported by snap:
 
 #### Download the plugin binary:
 
-You can get the pre-built binaries for your OS and architecture from the plugin's [GitHub Releases](https://github.com/intelsdi-x/snap-plugin-collector-mongodb/releasess) page. Download the plugin from the latest release and load it into `snapteld` (`/opt/snap/plugins` is the default location for snap packages).
+You can get the pre-built binaries for your OS and architecture from the plugin's [GitHub Releases](https://github.com/intelsdi-x/snap-plugin-collector-mongodb/releasess) page. Download the plugin from the latest release and load it into `snapteld` (`/opt/snap/plugins` is the default location for Snap packages).
 
 
 #### To build the plugin binary:
@@ -46,14 +46,14 @@ Clone repo into `$GOPATH/src/github.com/intelsdi-x/`:
 $ git clone https://github.com/<yourGithubID>/snap-plugin-collector-mongodb.git
 ```
 
-Build the snap mongodb plugin by running make within the cloned repo:
+Build the Snap mongodb plugin by running make within the cloned repo:
 ```
 $ make
 ```
 This builds the plugin in `./build/`
 
 ### Configuration and Usage
-* Set up the [snap framework](https://github.com/intelsdi-x/snap/blob/master/README.md#getting-started).
+* Set up the [Snap framework](https://github.com/intelsdi-x/snap/blob/master/README.md#getting-started).
 * Configure connection strings to MongoDB service which includes username , password , hostname (default "localhost:27017").
 
 * Load the plugin and create a task, see example in [Examples](#examples).
@@ -63,7 +63,7 @@ This builds the plugin in `./build/`
 This collector gathers metrics from mongodb server status command. 
 
 ### Global config
-Global configuration files are described in [snap's documentation](https://github.com/intelsdi-x/snap/blob/master/docs/snapteld_CONFIGURATION.md). You have to add `"mongodb"` section with following entries:
+Global configuration files are described in [Snap's documentation](https://github.com/intelsdi-x/snap/blob/master/docs/SNAPTELD_CONFIGURATION.md). You have to add `"mongodb"` section with following entries:
 
  - `"uri"` -  it's hostname and port pair in format `"hostname:port"`,  as default set to `"localhost:27017"`. 
  - `"username"` - username if authentification is enabled
@@ -77,14 +77,14 @@ List of collected metrics is described in [METRICS.md](METRICS.md).
 
 ### Examples
 
-Example of running snap mongodb collector and writing data to file.
+Example of running Snap mongodb collector and writing data to file.
 
 Ensure [snap daemon is running](https://github.com/intelsdi-x/snap#running-snap):
 * initd: `service snap-telemetry start`
 * systemd: `systemctl start snap-telemetry`
 * command line: `snapteld -l 1 -t 0 &`
 
-Download and load snap plugins:
+Download and load Snap plugins:
 ```
 $ wget http://snap.ci.snap-telemetry.io/plugins/snap-plugin-collector-mongodb/latest/linux/x86_64/snap-plugin-collector-mongodb
 $ wget http://snap.ci.snap-telemetry.io/plugins/snap-plugin-publisher-file/latest/linux/x86_64/snap-plugin-publisher-file
@@ -165,7 +165,7 @@ There isn't a current roadmap for this plugin, but it is in active development. 
 If you have a feature request, please add it as an [issue](https://github.com/intelsdi-x/snap-plugin-collector-mongodb/issues/new) and/or submit a [pull request](https://github.com/intelsdi-x/snap-plugin-collector-mongodb/pulls).
 
 ## Community Support
-This repository is one of **many** plugins in **snap**, a powerful telemetry framework. See the full project at http://github.com/intelsdi-x/snap.
+This repository is one of **many** plugins in **Snap**, a powerful telemetry framework. See the full project at http://github.com/intelsdi-x/snap.
 
 To reach out to other users, head to the [main framework](https://github.com/intelsdi-x/snap#community-support) or visit [Slack](http://slack.snap-telemetry.io).
 
