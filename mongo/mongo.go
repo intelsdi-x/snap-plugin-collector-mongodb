@@ -51,7 +51,7 @@ func GetConnection(URL, AuthPassword, AuthUserName string) (*mgo.Session, error)
 // GetServerStatus returns server status
 func GetServerStatus(session *mgo.Session) (ServerStatus, error) {
 	result := ServerStatus{}
-	if err := session.Run(bson.D{{"serverStatus", 1}}, &result); err != nil {
+	if err := session.Run(bson.D{{"serverStatus", 1}, {"tcmalloc", 1}}, &result); err != nil {
 		return result, err
 	}
 	defer session.Close()

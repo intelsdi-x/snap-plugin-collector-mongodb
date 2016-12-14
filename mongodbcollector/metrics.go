@@ -152,30 +152,33 @@ func getTmallocMetrics(status mwrapper.ServerStatus, mts []plugin.Metric, meta m
 		ns := make([]plugin.NamespaceElement, len(mt.Namespace))
 		copy(ns, mt.Namespace)
 
-		switch ns[nsSubMetric].Value {
-		case "current_allocated_bytes":
-			metrics = append(metrics, createMeasurement(mt, status.Tcmalloc.Generic.CurrentAllocatedBytes, ns, meta))
-		case "heap_size":
-			metrics = append(metrics, createMeasurement(mt, status.Tcmalloc.Generic.HeapSize, ns, meta))
-		case "pageheap_free_bytes":
-			metrics = append(metrics, createMeasurement(mt, status.Tcmalloc.Tcmalloc.PageheapFreeBytes, ns, meta))
-		case "pageheap_unmapped_bytes":
-			metrics = append(metrics, createMeasurement(mt, status.Tcmalloc.Tcmalloc.PageheapUnmappedBytes, ns, meta))
-		case "max_total_thread_cache_bytes":
-			metrics = append(metrics, createMeasurement(mt, status.Tcmalloc.Tcmalloc.MaxTotalThreadCacheBytes, ns, meta))
-		case "current_total_thread_cache_bytes":
-			metrics = append(metrics, createMeasurement(mt, status.Tcmalloc.Tcmalloc.CurrentTotalThreadCacheBytes, ns, meta))
-		case "total_free_bytes":
-			metrics = append(metrics, createMeasurement(mt, status.Tcmalloc.Tcmalloc.TotalFreeBytes, ns, meta))
-		case "central_cache_free_bytes":
-			metrics = append(metrics, createMeasurement(mt, status.Tcmalloc.Tcmalloc.CentralCacheFreeBytes, ns, meta))
-		case "transfer_cache_free_bytes":
-			metrics = append(metrics, createMeasurement(mt, status.Tcmalloc.Tcmalloc.TransferCacheFreeBytes, ns, meta))
-		case "thread_cache_free_bytes":
-			metrics = append(metrics, createMeasurement(mt, status.Tcmalloc.Tcmalloc.ThreadCacheFreeBytes, ns, meta))
-		case "aggressive_memory_decommit":
-			metrics = append(metrics, createMeasurement(mt, status.Tcmalloc.Tcmalloc.AggressiveMemoryDecommit, ns, meta))
-
+		if status.Tcmalloc == nil { // Skip metric collection when tcmalloc is not available in installed MongoDB version
+			metrics = append(metrics, createMeasurement(mt, nil, ns, meta))
+		} else {
+			switch ns[nsSubMetric].Value {
+			case "current_allocated_bytes":
+				metrics = append(metrics, createMeasurement(mt, status.Tcmalloc.Generic.CurrentAllocatedBytes, ns, meta))
+			case "heap_size":
+				metrics = append(metrics, createMeasurement(mt, status.Tcmalloc.Generic.HeapSize, ns, meta))
+			case "pageheap_free_bytes":
+				metrics = append(metrics, createMeasurement(mt, status.Tcmalloc.Tcmalloc.PageheapFreeBytes, ns, meta))
+			case "pageheap_unmapped_bytes":
+				metrics = append(metrics, createMeasurement(mt, status.Tcmalloc.Tcmalloc.PageheapUnmappedBytes, ns, meta))
+			case "max_total_thread_cache_bytes":
+				metrics = append(metrics, createMeasurement(mt, status.Tcmalloc.Tcmalloc.MaxTotalThreadCacheBytes, ns, meta))
+			case "current_total_thread_cache_bytes":
+				metrics = append(metrics, createMeasurement(mt, status.Tcmalloc.Tcmalloc.CurrentTotalThreadCacheBytes, ns, meta))
+			case "total_free_bytes":
+				metrics = append(metrics, createMeasurement(mt, status.Tcmalloc.Tcmalloc.TotalFreeBytes, ns, meta))
+			case "central_cache_free_bytes":
+				metrics = append(metrics, createMeasurement(mt, status.Tcmalloc.Tcmalloc.CentralCacheFreeBytes, ns, meta))
+			case "transfer_cache_free_bytes":
+				metrics = append(metrics, createMeasurement(mt, status.Tcmalloc.Tcmalloc.TransferCacheFreeBytes, ns, meta))
+			case "thread_cache_free_bytes":
+				metrics = append(metrics, createMeasurement(mt, status.Tcmalloc.Tcmalloc.ThreadCacheFreeBytes, ns, meta))
+			case "aggressive_memory_decommit":
+				metrics = append(metrics, createMeasurement(mt, status.Tcmalloc.Tcmalloc.AggressiveMemoryDecommit, ns, meta))
+			}
 		}
 	}
 	return metrics
