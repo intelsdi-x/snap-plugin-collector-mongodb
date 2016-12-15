@@ -1,6 +1,8 @@
 [![Build Status](https://api.travis-ci.org/intelsdi-x/snap-plugin-collector-mongodb.svg)](https://travis-ci.org/intelsdi-x/snap-plugin-collector-mongodb )
 [![Go Report Card](http://goreportcard.com/badge/intelsdi-x/snap-plugin-collector-mongodb)](http://goreportcard.com/report/intelsdi-x/snap-plugin-collector-mongodb)
 
+# Snap collector plugin - mongodb
+
 This plugin collects metrics from MongoDB database.  
 
 It's used in the [Snap framework](http://github.com/intelsdi-x/snap).
