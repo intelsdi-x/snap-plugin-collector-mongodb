@@ -3,26 +3,26 @@ sudo: true
 dist: trusty
 language: go
 go:
-- 1.6.3
-- 1.7.3
+- 1.7.x
+- 1.8.x
 addons:
-  apt:
-    sources:
-    - mongodb-3.2-trusty
-    packages:
-    - mongodb-org-server
+apt:
+  sources:
+  - mongodb-3.2-trusty
+  packages:
+  - mongodb-org-server
 services:
-  - mongodb
+- mongodb
 env:
   global:
   - ORG_PATH=/home/travis/gopath/src/github.com/intelsdi-x
   - SNAP_PLUGIN_SOURCE=/home/travis/gopath/src/github.com/${TRAVIS_REPO_SLUG}
   matrix:
   - TEST_TYPE=medium
-  - TEST_TYPE=build
+  - TEST_TYPE: build
 matrix:
   exclude:
-  - go: 1.6.3
+  - go: 1.7.x
     env: TEST_TYPE=build
 before_install:
 - "[[ -d $SNAP_PLUGIN_SOURCE ]] || mkdir -p $ORG_PATH && ln -s $TRAVIS_BUILD_DIR $SNAP_PLUGIN_SOURCE"
@@ -39,9 +39,8 @@ before_deploy:
 - "./scripts/pre_deploy.sh"
 deploy:
 - provider: s3
-  access_key_id: AKIAINMB43VSSPFZISAA
-  secret_access_key:
-    secure: hZ5B4kA2g+Ok9Y54KNXcqZ/Qz1TDvTBRDqRc+nEPV9YUcuR4ZJdvpPI6dLvHpq8x09PKLDUsCncFpON+QfLgGSHMVk66hT30cUumYK1I1KOVM7t74143cNGIZqzziBawqVPBz/2nUYQZKIAJIiS4cd2bW9Jd4CFm/8RiW9aaXo2hMof+8i+AzANcCFzEbFdDOXfpvRz7zVFzFR482XRZUbfiEZVAVlej/ityUo2FQWQsorj+Ug46wInCj/nmJhGK0LSmMhYamoaOQr8MVjSVqNJUnLhuhCl/TJI1PR7qlIR2CA6KtEFcORjtPULbupnB44XIWKoDbQr0QkKM1yu4tf7Cm4F4BBJVzS9h5enXBNtjhzk3LBwUurSGHLwQYdWSGwtnO7Rdg0KhjTBaeGyS2cFD4qSs1ZRSnkF7Lgq/eg0RbZPr1yINJOzNcPpfDdHN9uI4+u9xmL3xiSpcUCfBzLNW5OnKowSHwCEIEkjISon/N5PlXMSBpZGgJYj9eH20fhJ7wl7SZLwMCjlS3e1L9Xe3YpMyiyfuGGWKz44i2y4tr6q5ywNKY82w8QzU7uJ1eYb7mGdG+wWbimmemAJWlM6k9+6tvp5P0qrXI6BHcO4+1U4TrWtPlFv4QUhrLmcLmS7UOK5OBWElewpCmWm3LAFqKdJCOmougWSn7YSppY4=
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
   bucket: snap.ci.snap-telemetry.io
   region: us-west-2
   skip_cleanup: true
@@ -51,11 +50,10 @@ deploy:
   on:
     repo: intelsdi-x/snap-plugin-collector-mongodb
     branch: master
-    condition: $TEST_TYPE = "build" && $TRAVIS_GO_VERSION = "1.7.3"
+    condition: $TEST_TYPE = "build" && $TRAVIS_GO_VERSION =~ ^1\.8(|\.[0-9]+)$
 - provider: s3
-  access_key_id: AKIAINMB43VSSPFZISAA
-  secret_access_key:
-    secure: hZ5B4kA2g+Ok9Y54KNXcqZ/Qz1TDvTBRDqRc+nEPV9YUcuR4ZJdvpPI6dLvHpq8x09PKLDUsCncFpON+QfLgGSHMVk66hT30cUumYK1I1KOVM7t74143cNGIZqzziBawqVPBz/2nUYQZKIAJIiS4cd2bW9Jd4CFm/8RiW9aaXo2hMof+8i+AzANcCFzEbFdDOXfpvRz7zVFzFR482XRZUbfiEZVAVlej/ityUo2FQWQsorj+Ug46wInCj/nmJhGK0LSmMhYamoaOQr8MVjSVqNJUnLhuhCl/TJI1PR7qlIR2CA6KtEFcORjtPULbupnB44XIWKoDbQr0QkKM1yu4tf7Cm4F4BBJVzS9h5enXBNtjhzk3LBwUurSGHLwQYdWSGwtnO7Rdg0KhjTBaeGyS2cFD4qSs1ZRSnkF7Lgq/eg0RbZPr1yINJOzNcPpfDdHN9uI4+u9xmL3xiSpcUCfBzLNW5OnKowSHwCEIEkjISon/N5PlXMSBpZGgJYj9eH20fhJ7wl7SZLwMCjlS3e1L9Xe3YpMyiyfuGGWKz44i2y4tr6q5ywNKY82w8QzU7uJ1eYb7mGdG+wWbimmemAJWlM6k9+6tvp5P0qrXI6BHcO4+1U4TrWtPlFv4QUhrLmcLmS7UOK5OBWElewpCmWm3LAFqKdJCOmougWSn7YSppY4=
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
   bucket: snap.ci.snap-telemetry.io
   region: us-west-2
   skip_cleanup: true
@@ -65,14 +63,13 @@ deploy:
   on:
     repo: intelsdi-x/snap-plugin-collector-mongodb
     tags: true
-    condition: $TEST_TYPE = "build" && $TRAVIS_GO_VERSION = "1.7.3"
+    condition: $TEST_TYPE = "build" && $TRAVIS_GO_VERSION =~ ^1\.8(|\.[0-9]+)$
 - provider: releases
-  api_key:
-    secure: S+OHRyyGSJkqbNLMkY3JymkEQVHFScRCSUXtw+zmiJYrLYhcYX0ggi9iULtCHxmzj+ESNtDcnN0wEi+TIYLM6iLw9zzGcLvCYt7bLQnHdPBw6G7E4+Z/990btfAoAfKGkZEvrZMCgdgphweTCWVcb9ej9yPf/E1qgWIGz+mOXRjdLkqHrbamaoOzuVBcmOLxUADecjc7R/nVNmuC7/1g4/Zy3agpJ2crax9QTWFoUScAG9vU7iCJFfzUMgawiIPdsHqh3L+UO70V5FdFtE5eOtW2TJSKYF8aukh0nScHNHQcTIeSy9EFk/NRGa4RDIpUtxQh9rdS2gS3/jc2NWQqfkorxGJCk/rz/i6gzMsMF3ZiEPwG9vspEKpuq24bRP7UmFOtu9zf80M9KhFnxDMe1bZzAwDUYvFj5NFv3zn5VBYLu8tRQhZX5MHlh1b3tiiDt5aEdhxQqYr2jUQsfldgBlLYGNl+Ciiy3VrjrC1rOIeM8Qg2/QcuLXIKa8pSU4uBKnDBRmjhlrL+KNtJ0Ic4X2TOK59bgeHJVXic9Ef9YAlkG3FIXAJu2QyxsszNwBlNGMIcXyFH9M0zbp63pXt6rZlh0gqMKBquLwXcb03Pc7aKr0TUDD7ksY5THPzkN2ZJT4T9vCWXIfTmNnnAIkLwEUD9cm8Gi+jZfNXRWjhonnw=
+  api_key: $GITHUB_API_KEY
   file:
     - release/snap-plugin-collector-mongodb_linux_x86_64
   skip_cleanup: true
   on:
     repo: intelsdi-x/snap-plugin-collector-mongodb
     tags: true
-    condition: $TEST_TYPE = "build" && $TRAVIS_GO_VERSION = "1.7.3"
+    condition: $TEST_TYPE = "build" && $TRAVIS_GO_VERSION =~ ^1\.8(|\.[0-9]+)$
