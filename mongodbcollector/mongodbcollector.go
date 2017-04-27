@@ -34,7 +34,7 @@ const (
 	// Plugin plugin name
 	Plugin = "mongodb"
 	// Version of plugin
-	Version = 2
+	Version = 3
 
 	nsMetricPostion = 2
 	nsSubMetric     = 3

@@ -1,19 +1,21 @@
 hash: 20ff19078d837ef911f260f800fbf6f0caf23e39c0762f1795a33712fd287354
-updated: 2016-12-02T11:43:18.21002394+01:00
+updated: 2017-04-24T15:58:28.594018555+02:00
 imports:
 - name: github.com/golang/protobuf
   version: 888eb0692c857ec880338addf316bd662d5e630e
   subpackages:
   - proto
 - name: github.com/intelsdi-x/snap-plugin-lib-go
-  version: 4b5999a62ffb7604f173c1ab3c2205ba8b559624
+  version: 3527311f5c8e6fe9b55fc1f44e1b515a30845e18
   subpackages:
   - v1/plugin
   - v1/plugin/rpc
 - name: github.com/julienschmidt/httprouter
-  version: 8c199fb6259ffc1af525cc3ad52ee60ba8359669
+  version: 6f3f3919c8781ce5c0509c83fffc887a7830c938
+- name: github.com/Sirupsen/logrus
+  version: ba1b36c82c5e05c4f912a88eab0dcd91a171688f
 - name: golang.org/x/net
-  version: 04557861f124410b768b1ba5bb3a91b705afbfc6
+  version: 154d9f9ea81208afed560f4cf27b4860c8ed1904
   subpackages:
   - context
   - http2
@@ -21,6 +23,10 @@ imports:
   - internal/timeseries
   - lex/httplex
   - trace
+- name: golang.org/x/sys
+  version: c8bc69bc2db9c57ccf979550bc69655df5039a8a
+  subpackages:
+  - unix
 - name: google.golang.org/grpc
   version: 0032a855ba5c8a3c8e0d71c2deef354b70af1584
   subpackages:
