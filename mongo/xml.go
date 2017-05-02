@@ -23,710 +23,710 @@ import "time"
 
 //Asserts contains info about Asserts
 type Asserts struct {
-	Regular   int `json:"regular"`
-	Warning   int `json:"warning"`
-	Msg       int `json:"msg"`
-	User      int `json:"user"`
-	Rollovers int `json:"rollovers"`
+	Regular   int `bson:"regular"`
+	Warning   int `bson:"warning"`
+	Msg       int `bson:"msg"`
+	User      int `bson:"user"`
+	Rollovers int `bson:"rollovers"`
 }
 
 //Connections contains info about Connections
 type Connections struct {
-	Current      int `json:"current"`
-	Available    int `json:"available"`
-	TotalCreated int `json:"totalCreated"`
+	Current      int `bson:"current"`
+	Available    int `bson:"available"`
+	TotalCreated int `bson:"totalCreated"`
 }
 
 //Extra_Info contains info about ExtraInfo
 type Extra_Info struct {
-	Note           string `json:"note"`
-	HeapUsageBytes int    `json:"heap_usage_bytes"`
-	PageFaults     int    `json:"page_faults"`
+	Note           string `bson:"note"`
+	HeapUsageBytes int    `bson:"heap_usage_bytes"`
+	PageFaults     int    `bson:"page_faults"`
 }
 
 //GlobalLock contains info about GlobalLock
 type GlobalLock struct {
-	TotalTime     int            `json:"totalTime"`
-	CurrentQueue  *CurrentQueue  `json:"currentQueue"`
-	ActiveClients *ActiveClients `json:"activeClients"`
+	TotalTime     int            `bson:"totalTime"`
+	CurrentQueue  *CurrentQueue  `bson:"currentQueue"`
+	ActiveClients *ActiveClients `bson:"activeClients"`
 }
 
 //ActiveClients contains info about ActiveClients
 type ActiveClients struct {
-	Total   int `json:"total"`
-	Readers int `json:"readers"`
-	Writers int `json:"writers"`
+	Total   int `bson:"total"`
+	Readers int `bson:"readers"`
+	Writers int `bson:"writers"`
 }
 
 //CurrentQueue contains info about CurrentQueue
 type CurrentQueue struct {
-	Total   int `json:"total"`
-	Readers int `json:"readers"`
-	Writers int `json:"writers"`
+	Total   int `bson:"total"`
+	Readers int `bson:"readers"`
+	Writers int `bson:"writers"`
 }
 
 //Opcounters contains info about Opcounters
 type Opcounters struct {
-	Insert  int `json:"insert"`
-	Query   int `json:"query"`
-	Update  int `json:"update"`
-	Delete  int `json:"delete"`
-	Getmore int `json:"getmore"`
-	Command int `json:"command"`
+	Insert  int `bson:"insert"`
+	Query   int `bson:"query"`
+	Update  int `bson:"update"`
+	Delete  int `bson:"delete"`
+	Getmore int `bson:"getmore"`
+	Command int `bson:"command"`
 }
 
 // AcquireCount contains stats about AcquireCount
 type AcquireCount struct {
-	R int `json:"r"`
-	W int `json:"w"`
+	R int `bson:"r"`
+	W int `bson:"w"`
 }
 
 // Global contains stats about Global
 type Global struct {
-	AcquireCount *AcquireCount `json:"acquireCount"`
+	AcquireCount *AcquireCount `bson:"acquireCount"`
 }
 
 // Database contains stats about Database
 type Database struct {
-	AcquireCount *AcquireCount `json:"acquireCount"`
+	AcquireCount *AcquireCount `bson:"acquireCount"`
 }
 
 // Collection contains stats about Collection
 type Collection struct {
-	AcquireCount *AcquireCount `json:"acquireCount"`
+	AcquireCount *AcquireCount `bson:"acquireCount"`
 }
 
 // Metadata contains stats about Metadata
 type Metadata struct {
-	AcquireCount *AcquireCount `json:"acquireCount"`
+	AcquireCount *AcquireCount `bson:"acquireCount"`
 }
 
 // Locks contains stats about Locks
 type Locks struct {
-	Global     *Global     `json:"Global"`
-	Database   *Database   `json:"Database"`
-	Collection *Collection `json:"Collection"`
-	Metadata   *Metadata   `json:"Metadata"`
+	Global     *Global     `bson:"Global"`
+	Database   *Database   `bson:"Database"`
+	Collection *Collection `bson:"Collection"`
+	Metadata   *Metadata   `bson:"Metadata"`
 }
 
 // OpcountersRepl contains stats about OpcountersRepl
 type OpcountersRepl struct {
-	Insert  int `json:"insert"`
-	Query   int `json:"query"`
-	Update  int `json:"update"`
-	Delete  int `json:"delete"`
-	Getmore int `json:"getmore"`
-	Command int `json:"command"`
+	Insert  int `bson:"insert"`
+	Query   int `bson:"query"`
+	Update  int `bson:"update"`
+	Delete  int `bson:"delete"`
+	Getmore int `bson:"getmore"`
+	Command int `bson:"command"`
 }
 
 // Network contains stats about Network
 type Network struct {
-	BytesIn     int `json:"bytesIn"`
-	BytesOut    int `json:"bytesOut"`
-	NumRequests int `json:"numRequests"`
+	BytesIn     int `bson:"bytesIn"`
+	BytesOut    int `bson:"bytesOut"`
+	NumRequests int `bson:"numRequests"`
 }
 
 // StorageEngine contains stats about StorageEngine
 type StorageEngine struct {
-	Name                   string `json:"name"`
-	SupportsCommittedReads bool   `json:"supportsCommittedReads"`
-	Persistent             bool   `json:"persistent"`
+	Name                   string `bson:"name"`
+	SupportsCommittedReads bool   `bson:"supportsCommittedReads"`
+	Persistent             bool   `bson:"persistent"`
 }
 
 // Generic contains stats about Generic
 type Generic struct {
-	CurrentAllocatedBytes int `json:"current_allocated_bytes"`
-	HeapSize              int `json:"heap_size"`
+	CurrentAllocatedBytes int `bson:"current_allocated_bytes"`
+	HeapSize              int `bson:"heap_size"`
 }
 
 // TcmallocStat contains stats about TcmallocStat
 type TcmallocStat struct {
-	PageheapFreeBytes            int    `json:"pageheap_free_bytes"`
-	PageheapUnmappedBytes        int    `json:"pageheap_unmapped_bytes"`
-	MaxTotalThreadCacheBytes     int    `json:"max_total_thread_cache_bytes"`
-	CurrentTotalThreadCacheBytes int    `json:"current_total_thread_cache_bytes"`
-	TotalFreeBytes               int    `json:"total_free_bytes"`
-	CentralCacheFreeBytes        int    `json:"central_cache_free_bytes"`
-	TransferCacheFreeBytes       int    `json:"transfer_cache_free_bytes"`
-	ThreadCacheFreeBytes         int    `json:"thread_cache_free_bytes"`
-	AggressiveMemoryDecommit     int    `json:"aggressive_memory_decommit"`
-	FormattedString              string `json:"formattedString"`
+	PageheapFreeBytes            int    `bson:"pageheap_free_bytes"`
+	PageheapUnmappedBytes        int    `bson:"pageheap_unmapped_bytes"`
+	MaxTotalThreadCacheBytes     int    `bson:"max_total_thread_cache_bytes"`
+	CurrentTotalThreadCacheBytes int    `bson:"current_total_thread_cache_bytes"`
+	TotalFreeBytes               int    `bson:"total_free_bytes"`
+	CentralCacheFreeBytes        int    `bson:"central_cache_free_bytes"`
+	TransferCacheFreeBytes       int    `bson:"transfer_cache_free_bytes"`
+	ThreadCacheFreeBytes         int    `bson:"thread_cache_free_bytes"`
+	AggressiveMemoryDecommit     int    `bson:"aggressive_memory_decommit"`
+	FormattedString              string `bson:"formattedString"`
 }
 
 // Tcmalloc contains stats about Tcmalloc
 type Tcmalloc struct {
-	Generic  *Generic      `json:"generic"`
-	Tcmalloc *TcmallocStat `json:"tcmalloc"`
+	Generic  *Generic      `bson:"generic"`
+	Tcmalloc *TcmallocStat `bson:"tcmalloc"`
 }
 
 // Mem contains stats about Mem
 type Mem struct {
-	Bits              int  `json:"bits"`
-	Resident          int  `json:"resident"`
-	Virtual           int  `json:"virtual"`
-	Supported         bool `json:"supported"`
-	Mapped            int  `json:"mapped"`
-	MappedWithJournal int  `json:"mappedWithJournal"`
+	Bits              int  `bson:"bits"`
+	Resident          int  `bson:"resident"`
+	Virtual           int  `bson:"virtual"`
+	Supported         bool `bson:"supported"`
+	Mapped            int  `bson:"mapped"`
+	MappedWithJournal int  `bson:"mappedWithJournal"`
 }
 
 // LSM contains stats about LSM
 type LSM struct {
-	ApplicationWorkUnitsCurrentlyQueued int `json:"application work units currently queued"`
-	MergeWorkUnitsCurrentlyQueued       int `json:"merge work units currently queued"`
-	RowsMergedInAnLSMTree               int `json:"rows merged in an LSM tree"`
-	SleepForLSMCheckpointThrottle       int `json:"sleep for LSM checkpoint throttle"`
-	SleepForLSMMergeThrottle            int `json:"sleep for LSM merge throttle"`
-	SwitchWorkUnitsCurrentlyQueued      int `json:"switch work units currently queued"`
-	TreeMaintenanceOperationsDiscarded  int `json:"tree maintenance operations discarded"`
-	TreeMaintenanceOperationsExecuted   int `json:"tree maintenance operations executed"`
-	TreeMaintenanceOperationsScheduled  int `json:"tree maintenance operations scheduled"`
-	TreeQueueHitMaximum                 int `json:"tree queue hit maximum"`
+	ApplicationWorkUnitsCurrentlyQueued int `bson:"application work units currently queued"`
+	MergeWorkUnitsCurrentlyQueued       int `bson:"merge work units currently queued"`
+	RowsMergedInAnLSMTree               int `bson:"rows merged in an LSM tree"`
+	SleepForLSMCheckpointThrottle       int `bson:"sleep for LSM checkpoint throttle"`
+	SleepForLSMMergeThrottle            int `bson:"sleep for LSM merge throttle"`
+	SwitchWorkUnitsCurrentlyQueued      int `bson:"switch work units currently queued"`
+	TreeMaintenanceOperationsDiscarded  int `bson:"tree maintenance operations discarded"`
+	TreeMaintenanceOperationsExecuted   int `bson:"tree maintenance operations executed"`
+	TreeMaintenanceOperationsScheduled  int `bson:"tree maintenance operations scheduled"`
+	TreeQueueHitMaximum                 int `bson:"tree queue hit maximum"`
 }
 
 // Async contains stats about Async
 type Async struct {
-	CurrentWorkQueueLength                    int `json:"current work queue length"`
-	MaximumWorkQueueLength                    int `json:"maximum work queue length"`
-	NumberOfAllocationStateRaces              int `json:"number of allocation state races"`
-	NumberOfFlushCalls                        int `json:"number of flush calls"`
-	NumberOfOperationSlotsViewedForAllocation int `json:"number of operation slots viewed for allocation"`
-	NumberOfTimesOperationAllocationFailed    int `json:"number of times operation allocation failed"`
-	NumberOfTimesWorkerFoundNoWork            int `json:"number of times worker found no work"`
-	TotalAllocations                          int `json:"total allocations"`
-	TotalCompactCalls                         int `json:"total compact calls"`
-	TotalInsertCalls                          int `json:"total insert calls"`
-	TotalRemoveCalls                          int `json:"total remove calls"`
-	TotalSearchCalls                          int `json:"total search calls"`
-	TotalUpdateCalls                          int `json:"total update calls"`
+	CurrentWorkQueueLength                    int `bson:"current work queue length"`
+	MaximumWorkQueueLength                    int `bson:"maximum work queue length"`
+	NumberOfAllocationStateRaces              int `bson:"number of allocation state races"`
+	NumberOfFlushCalls                        int `bson:"number of flush calls"`
+	NumberOfOperationSlotsViewedForAllocation int `bson:"number of operation slots viewed for allocation"`
+	NumberOfTimesOperationAllocationFailed    int `bson:"number of times operation allocation failed"`
+	NumberOfTimesWorkerFoundNoWork            int `bson:"number of times worker found no work"`
+	TotalAllocations                          int `bson:"total allocations"`
+	TotalCompactCalls                         int `bson:"total compact calls"`
+	TotalInsertCalls                          int `bson:"total insert calls"`
+	TotalRemoveCalls                          int `bson:"total remove calls"`
+	TotalSearchCalls                          int `bson:"total search calls"`
+	TotalUpdateCalls                          int `bson:"total update calls"`
 }
 
 // BlockManager contains stats about BlockManager
 type BlockManager struct {
-	BlocksPreLoaded           int `json:"blocks pre-loaded"`
-	BlocksRead                int `json:"blocks read"`
-	BlocksWritten             int `json:"blocks written"`
-	BytesRead                 int `json:"bytes read"`
-	BytesWritten              int `json:"bytes written"`
-	BytesWrittenForCheckpoint int `json:"bytes written for checkpoint"`
-	MappedBlocksRead          int `json:"mapped blocks read"`
-	MappedBytesRead           int `json:"mapped bytes read"`
+	BlocksPreLoaded           int `bson:"blocks pre-loaded"`
+	BlocksRead                int `bson:"blocks read"`
+	BlocksWritten             int `bson:"blocks written"`
+	BytesRead                 int `bson:"bytes read"`
+	BytesWritten              int `bson:"bytes written"`
+	BytesWrittenForCheckpoint int `bson:"bytes written for checkpoint"`
+	MappedBlocksRead          int `bson:"mapped blocks read"`
+	MappedBytesRead           int `bson:"mapped bytes read"`
 }
 
 // Cache contains stats about Cache
 type Cache struct {
-	BytesBelongingToPageImagesInTheCache                       int `json:"bytes belonging to page images in the cache"`
-	BytesCurrentlyInTheCache                                   int `json:"bytes currently in the cache"`
-	BytesNotBelongingToPageImagesInTheCache                    int `json:"bytes not belonging to page images in the cache"`
-	BytesReadIntoCache                                         int `json:"bytes read into cache"`
-	BytesWrittenFromCache                                      int `json:"bytes written from cache"`
-	CheckpointBlockedPageEviction                              int `json:"checkpoint blocked page eviction"`
-	EvictionCallsToGetAPage                                    int `json:"eviction calls to get a page"`
-	EvictionCallsToGetAPageFoundQueueEmpty                     int `json:"eviction calls to get a page found queue empty"`
-	EvictionCallsToGetAPageFoundQueueEmptyAfterLocking         int `json:"eviction calls to get a page found queue empty after locking"`
-	EvictionCurrentlyOperatingInAggressiveMode                 int `json:"eviction currently operating in aggressive mode"`
-	EvictionEmptyScore                                         int `json:"eviction empty score"`
-	EvictionServerCandidateQueueEmptyWhenToppingUp             int `json:"eviction server candidate queue empty when topping up"`
-	EvictionServerCandidateQueueNotEmptyWhenToppingUp          int `json:"eviction server candidate queue not empty when topping up"`
-	EvictionServerEvictingPages                                int `json:"eviction server evicting pages"`
-	EvictionServerSleptBecauseWeDidNotMakeProgressWithEviction int `json:"eviction server slept, because we did not make progress with eviction"`
-	EvictionServerUnableToReachEvictionGoal                    int `json:"eviction server unable to reach eviction goal"`
-	EvictionState                                              int `json:"eviction state"`
-	EvictionWalksAbandoned                                     int `json:"eviction walks abandoned"`
-	EvictionWorkerThreadEvictingPages                          int `json:"eviction worker thread evicting pages"`
-	FailedEvictionOfPagesThatExceededTheInMemoryMaximum        int `json:"failed eviction of pages that exceeded the in-memory maximum"`
-	FilesWithActiveEvictionWalks                               int `json:"files with active eviction walks"`
-	FilesWithNewEvictionWalksStarted                           int `json:"files with new eviction walks started"`
-	HazardPointerBlockedPageEviction                           int `json:"hazard pointer blocked page eviction"`
-	HazardPointerCheckCalls                                    int `json:"hazard pointer check calls"`
-	HazardPointerCheckEntriesWalked                            int `json:"hazard pointer check entries walked"`
-	HazardPointerMaximumArrayLength                            int `json:"hazard pointer maximum array length"`
-	InMemoryPagePassedCriteriaToBeSplit                        int `json:"in-memory page passed criteria to be split"`
-	InMemoryPageSplits                                         int `json:"in-memory page splits"`
-	InternalPagesEvicted                                       int `json:"internal pages evicted"`
-	InternalPagesSplitDuringEviction                           int `json:"internal pages split during eviction"`
-	LeafPagesSplitDuringEviction                               int `json:"leaf pages split during eviction"`
-	LookasideTableInsertCalls                                  int `json:"lookaside table insert calls"`
-	LookasideTableRemoveCalls                                  int `json:"lookaside table remove calls"`
-	MaximumBytesConfigured                                     int `json:"maximum bytes configured"`
-	MaximumPageSizeAtEviction                                  int `json:"maximum page size at eviction"`
-	ModifiedPagesEvicted                                       int `json:"modified pages evicted"`
-	ModifiedPagesEvictedByApplicationThreads                   int `json:"modified pages evicted by application threads"`
-	OverflowPagesReadIntoCache                                 int `json:"overflow pages read into cache"`
-	OverflowValuesCachedInMemory                               int `json:"overflow values cached in memory"`
-	PageSplitDuringEvictionDeepenedTheTree                     int `json:"page split during eviction deepened the tree"`
-	PageWrittenRequiringLookasideRecords                       int `json:"page written requiring lookaside records"`
-	PagesCurrentlyHeldInTheCache                               int `json:"pages currently held in the cache"`
-	PagesEvictedBecauseTheyExceededTheInMemoryMaximum          int `json:"pages evicted because they exceeded the in-memory maximum"`
-	PagesEvictedBecauseTheyHadChainsOfDeletedItems             int `json:"pages evicted because they had chains of deleted items"`
-	PagesEvictedByApplicationThreads                           int `json:"pages evicted by application threads"`
-	PagesQueuedForEviction                                     int `json:"pages queued for eviction"`
-	PagesQueuedForUrgentEviction                               int `json:"pages queued for urgent eviction"`
-	PagesQueuedForUrgentEvictionDuringWalk                     int `json:"pages queued for urgent eviction during walk"`
-	PagesReadIntoCache                                         int `json:"pages read into cache"`
-	PagesReadIntoCacheRequiringLookasideEntries                int `json:"pages read into cache requiring lookaside entries"`
-	PagesRequestedFromTheCache                                 int `json:"pages requested from the cache"`
-	PagesSeenByEvictionWalk                                    int `json:"pages seen by eviction walk"`
-	PagesSelectedForEvictionUnableToBeEvicted                  int `json:"pages selected for eviction unable to be evicted"`
-	PagesWalkedForEviction                                     int `json:"pages walked for eviction"`
-	PagesWrittenFromCache                                      int `json:"pages written from cache"`
-	PagesWrittenRequiringInMemoryRestoration                   int `json:"pages written requiring in-memory restoration"`
-	PercentageOverhead                                         int `json:"percentage overhead"`
-	TrackedBytesBelongingToInternalPagesInTheCache             int `json:"tracked bytes belonging to internal pages in the cache"`
-	TrackedBytesBelongingToLeafPagesInTheCache                 int `json:"tracked bytes belonging to leaf pages in the cache"`
-	TrackedDirtyBytesInTheCache                                int `json:"tracked dirty bytes in the cache"`
-	TrackedDirtyPagesInTheCache                                int `json:"tracked dirty pages in the cache"`
-	UnmodifiedPagesEvicted                                     int `json:"unmodified pages evicted"`
+	BytesBelongingToPageImagesInTheCache                       int `bson:"bytes belonging to page images in the cache"`
+	BytesCurrentlyInTheCache                                   int `bson:"bytes currently in the cache"`
+	BytesNotBelongingToPageImagesInTheCache                    int `bson:"bytes not belonging to page images in the cache"`
+	BytesReadIntoCache                                         int `bson:"bytes read into cache"`
+	BytesWrittenFromCache                                      int `bson:"bytes written from cache"`
+	CheckpointBlockedPageEviction                              int `bson:"checkpoint blocked page eviction"`
+	EvictionCallsToGetAPage                                    int `bson:"eviction calls to get a page"`
+	EvictionCallsToGetAPageFoundQueueEmpty                     int `bson:"eviction calls to get a page found queue empty"`
+	EvictionCallsToGetAPageFoundQueueEmptyAfterLocking         int `bson:"eviction calls to get a page found queue empty after locking"`
+	EvictionCurrentlyOperatingInAggressiveMode                 int `bson:"eviction currently operating in aggressive mode"`
+	EvictionEmptyScore                                         int `bson:"eviction empty score"`
+	EvictionServerCandidateQueueEmptyWhenToppingUp             int `bson:"eviction server candidate queue empty when topping up"`
+	EvictionServerCandidateQueueNotEmptyWhenToppingUp          int `bson:"eviction server candidate queue not empty when topping up"`
+	EvictionServerEvictingPages                                int `bson:"eviction server evicting pages"`
+	EvictionServerSleptBecauseWeDidNotMakeProgressWithEviction int `bson:"eviction server slept, because we did not make progress with eviction"`
+	EvictionServerUnableToReachEvictionGoal                    int `bson:"eviction server unable to reach eviction goal"`
+	EvictionState                                              int `bson:"eviction state"`
+	EvictionWalksAbandoned                                     int `bson:"eviction walks abandoned"`
+	EvictionWorkerThreadEvictingPages                          int `bson:"eviction worker thread evicting pages"`
+	FailedEvictionOfPagesThatExceededTheInMemoryMaximum        int `bson:"failed eviction of pages that exceeded the in-memory maximum"`
+	FilesWithActiveEvictionWalks                               int `bson:"files with active eviction walks"`
+	FilesWithNewEvictionWalksStarted                           int `bson:"files with new eviction walks started"`
+	HazardPointerBlockedPageEviction                           int `bson:"hazard pointer blocked page eviction"`
+	HazardPointerCheckCalls                                    int `bson:"hazard pointer check calls"`
+	HazardPointerCheckEntriesWalked                            int `bson:"hazard pointer check entries walked"`
+	HazardPointerMaximumArrayLength                            int `bson:"hazard pointer maximum array length"`
+	InMemoryPagePassedCriteriaToBeSplit                        int `bson:"in-memory page passed criteria to be split"`
+	InMemoryPageSplits                                         int `bson:"in-memory page splits"`
+	InternalPagesEvicted                                       int `bson:"internal pages evicted"`
+	InternalPagesSplitDuringEviction                           int `bson:"internal pages split during eviction"`
+	LeafPagesSplitDuringEviction                               int `bson:"leaf pages split during eviction"`
+	LookasideTableInsertCalls                                  int `bson:"lookaside table insert calls"`
+	LookasideTableRemoveCalls                                  int `bson:"lookaside table remove calls"`
+	MaximumBytesConfigured                                     int `bson:"maximum bytes configured"`
+	MaximumPageSizeAtEviction                                  int `bson:"maximum page size at eviction"`
+	ModifiedPagesEvicted                                       int `bson:"modified pages evicted"`
+	ModifiedPagesEvictedByApplicationThreads                   int `bson:"modified pages evicted by application threads"`
+	OverflowPagesReadIntoCache                                 int `bson:"overflow pages read into cache"`
+	OverflowValuesCachedInMemory                               int `bson:"overflow values cached in memory"`
+	PageSplitDuringEvictionDeepenedTheTree                     int `bson:"page split during eviction deepened the tree"`
+	PageWrittenRequiringLookasideRecords                       int `bson:"page written requiring lookaside records"`
+	PagesCurrentlyHeldInTheCache                               int `bson:"pages currently held in the cache"`
+	PagesEvictedBecauseTheyExceededTheInMemoryMaximum          int `bson:"pages evicted because they exceeded the in-memory maximum"`
+	PagesEvictedBecauseTheyHadChainsOfDeletedItems             int `bson:"pages evicted because they had chains of deleted items"`
+	PagesEvictedByApplicationThreads                           int `bson:"pages evicted by application threads"`
+	PagesQueuedForEviction                                     int `bson:"pages queued for eviction"`
+	PagesQueuedForUrgentEviction                               int `bson:"pages queued for urgent eviction"`
+	PagesQueuedForUrgentEvictionDuringWalk                     int `bson:"pages queued for urgent eviction during walk"`
+	PagesReadIntoCache                                         int `bson:"pages read into cache"`
+	PagesReadIntoCacheRequiringLookasideEntries                int `bson:"pages read into cache requiring lookaside entries"`
+	PagesRequestedFromTheCache                                 int `bson:"pages requested from the cache"`
+	PagesSeenByEvictionWalk                                    int `bson:"pages seen by eviction walk"`
+	PagesSelectedForEvictionUnableToBeEvicted                  int `bson:"pages selected for eviction unable to be evicted"`
+	PagesWalkedForEviction                                     int `bson:"pages walked for eviction"`
+	PagesWrittenFromCache                                      int `bson:"pages written from cache"`
+	PagesWrittenRequiringInMemoryRestoration                   int `bson:"pages written requiring in-memory restoration"`
+	PercentageOverhead                                         int `bson:"percentage overhead"`
+	TrackedBytesBelongingToInternalPagesInTheCache             int `bson:"tracked bytes belonging to internal pages in the cache"`
+	TrackedBytesBelongingToLeafPagesInTheCache                 int `bson:"tracked bytes belonging to leaf pages in the cache"`
+	TrackedDirtyBytesInTheCache                                int `bson:"tracked dirty bytes in the cache"`
+	TrackedDirtyPagesInTheCache                                int `bson:"tracked dirty pages in the cache"`
+	UnmodifiedPagesEvicted                                     int `bson:"unmodified pages evicted"`
 }
 
 // Connection contains stats about Connection
 type Connection struct {
-	AutoAdjustingConditionResets         int `json:"auto adjusting condition resets"`
-	AutoAdjustingConditionWaitCalls      int `json:"auto adjusting condition wait calls"`
-	FilesCurrentlyOpen                   int `json:"files currently open"`
-	MemoryAllocations                    int `json:"memory allocations"`
-	MemoryFrees                          int `json:"memory frees"`
-	MemoryReAllocations                  int `json:"memory re-allocations"`
-	PthreadMutexConditionWaitCalls       int `json:"pthread mutex condition wait calls"`
-	PthreadMutexSharedLockReadLockCalls  int `json:"pthread mutex shared lock read-lock calls"`
-	PthreadMutexSharedLockWriteLockCalls int `json:"pthread mutex shared lock write-lock calls"`
-	TotalFsyncIOs                        int `json:"total fsync I/Os"`
-	TotalReadIOs                         int `json:"total read I/Os"`
-	TotalWriteIOs                        int `json:"total write I/Os"`
+	AutoAdjustingConditionResets         int `bson:"auto adjusting condition resets"`
+	AutoAdjustingConditionWaitCalls      int `bson:"auto adjusting condition wait calls"`
+	FilesCurrentlyOpen                   int `bson:"files currently open"`
+	MemoryAllocations                    int `bson:"memory allocations"`
+	MemoryFrees                          int `bson:"memory frees"`
+	MemoryReAllocations                  int `bson:"memory re-allocations"`
+	PthreadMutexConditionWaitCalls       int `bson:"pthread mutex condition wait calls"`
+	PthreadMutexSharedLockReadLockCalls  int `bson:"pthread mutex shared lock read-lock calls"`
+	PthreadMutexSharedLockWriteLockCalls int `bson:"pthread mutex shared lock write-lock calls"`
+	TotalFsyncIOs                        int `bson:"total fsync I/Os"`
+	TotalReadIOs                         int `bson:"total read I/Os"`
+	TotalWriteIOs                        int `bson:"total write I/Os"`
 }
 
 // WireCursor contains stats about WireCursor
 type WireCursor struct {
-	CursorCreateCalls       int `json:"cursor create calls"`
-	CursorInsertCalls       int `json:"cursor insert calls"`
-	CursorNextCalls         int `json:"cursor next calls"`
-	CursorPrevCalls         int `json:"cursor prev calls"`
-	CursorRemoveCalls       int `json:"cursor remove calls"`
-	CursorResetCalls        int `json:"cursor reset calls"`
-	CursorRestartedSearches int `json:"cursor restarted searches"`
-	CursorSearchCalls       int `json:"cursor search calls"`
-	CursorSearchNearCalls   int `json:"cursor search near calls"`
-	CursorUpdateCalls       int `json:"cursor update calls"`
-	TruncateCalls           int `json:"truncate calls"`
+	CursorCreateCalls       int `bson:"cursor create calls"`
+	CursorInsertCalls       int `bson:"cursor insert calls"`
+	CursorNextCalls         int `bson:"cursor next calls"`
+	CursorPrevCalls         int `bson:"cursor prev calls"`
+	CursorRemoveCalls       int `bson:"cursor remove calls"`
+	CursorResetCalls        int `bson:"cursor reset calls"`
+	CursorRestartedSearches int `bson:"cursor restarted searches"`
+	CursorSearchCalls       int `bson:"cursor search calls"`
+	CursorSearchNearCalls   int `bson:"cursor search near calls"`
+	CursorUpdateCalls       int `bson:"cursor update calls"`
+	TruncateCalls           int `bson:"truncate calls"`
 }
 
 // DataHandle contains stats about DataHandle
 type DataHandle struct {
-	ConnectionDataHandlesCurrentlyActive       int `json:"connection data handles currently active"`
-	ConnectionSweepCandidateBecameReferenced   int `json:"connection sweep candidate became referenced"`
-	ConnectionSweepDhandlesClosed              int `json:"connection sweep dhandles closed"`
-	ConnectionSweepDhandlesRemovedFromHashList int `json:"connection sweep dhandles removed from hash list"`
-	ConnectionSweepTimeOfDeathSets             int `json:"connection sweep time-of-death sets"`
-	ConnectionSweeps                           int `json:"connection sweeps"`
-	SessionDhandlesSwept                       int `json:"session dhandles swept"`
-	SessionSweepAttempts                       int `json:"session sweep attempts"`
+	ConnectionDataHandlesCurrentlyActive       int `bson:"connection data handles currently active"`
+	ConnectionSweepCandidateBecameReferenced   int `bson:"connection sweep candidate became referenced"`
+	ConnectionSweepDhandlesClosed              int `bson:"connection sweep dhandles closed"`
+	ConnectionSweepDhandlesRemovedFromHashList int `bson:"connection sweep dhandles removed from hash list"`
+	ConnectionSweepTimeOfDeathSets             int `bson:"connection sweep time-of-death sets"`
+	ConnectionSweeps                           int `bson:"connection sweeps"`
+	SessionDhandlesSwept                       int `bson:"session dhandles swept"`
+	SessionSweepAttempts                       int `bson:"session sweep attempts"`
 }
 
 // Log contains stats about Log
 type Log struct {
-	BusyReturnsAttemptingToSwitchSlots    int `json:"busy returns attempting to switch slots"`
-	ConsolidatedSlotClosures              int `json:"consolidated slot closures"`
-	ConsolidatedSlotJoinRaces             int `json:"consolidated slot join races"`
-	ConsolidatedSlotJoinTransitions       int `json:"consolidated slot join transitions"`
-	ConsolidatedSlotJoins                 int `json:"consolidated slot joins"`
-	ConsolidatedSlotUnbufferedWrites      int `json:"consolidated slot unbuffered writes"`
-	LogBytesOfPayloadData                 int `json:"log bytes of payload data"`
-	LogBytesWritten                       int `json:"log bytes written"`
-	LogFilesManuallyZeroFilled            int `json:"log files manually zero-filled"`
-	LogFlushOperations                    int `json:"log flush operations"`
-	LogForceWriteOperations               int `json:"log force write operations"`
-	LogForceWriteOperationsSkipped        int `json:"log force write operations skipped"`
-	LogRecordsCompressed                  int `json:"log records compressed"`
-	LogRecordsNotCompressed               int `json:"log records not compressed"`
-	LogRecordsTooSmallToCompress          int `json:"log records too small to compress"`
-	LogReleaseAdvancesWriteLSN            int `json:"log release advances write LSN"`
-	LogScanOperations                     int `json:"log scan operations"`
-	LogScanRecordsRequiringTwoReads       int `json:"log scan records requiring two reads"`
-	LogServerThreadAdvancesWriteLSN       int `json:"log server thread advances write LSN"`
-	LogServerThreadWriteLSNWalkSkipped    int `json:"log server thread write LSN walk skipped"`
-	LogSyncOperations                     int `json:"log sync operations"`
-	LogSyncTimeDurationUsecs              int `json:"log sync time duration (usecs"`
-	LogSyncDirOperations                  int `json:"log sync_dir operations"`
-	LogSyncDirTimeDurationUsecs           int `json:"log sync_dir time duration (usecs"`
-	LogWriteOperations                    int `json:"log write operations"`
-	LoggingBytesConsolidated              int `json:"logging bytes consolidated"`
-	MaximumLogFileSize                    int `json:"maximum log file size"`
-	NumberOfPreAllocatedLogFilesToCreate  int `json:"number of pre-allocated log files to create"`
-	PreAllocatedLogFilesNotReadyAndMissed int `json:"pre-allocated log files not ready and missed"`
-	PreAllocatedLogFilesPrepared          int `json:"pre-allocated log files prepared"`
-	PreAllocatedLogFilesUsed              int `json:"pre-allocated log files used"`
-	RecordsProcessedByLogScan             int `json:"records processed by log scan"`
-	TotalInMemorySizeOfCompressedRecords  int `json:"total in-memory size of compressed records"`
-	TotalLogBufferSize                    int `json:"total log buffer size"`
-	TotalSizeOfCompressedRecords          int `json:"total size of compressed records"`
-	WrittenSlotsCoalesced                 int `json:"written slots coalesced"`
-	YieldsWaitingForPreviousLogFileClose  int `json:"yields waiting for previous log file close"`
+	BusyReturnsAttemptingToSwitchSlots    int `bson:"busy returns attempting to switch slots"`
+	ConsolidatedSlotClosures              int `bson:"consolidated slot closures"`
+	ConsolidatedSlotJoinRaces             int `bson:"consolidated slot join races"`
+	ConsolidatedSlotJoinTransitions       int `bson:"consolidated slot join transitions"`
+	ConsolidatedSlotJoins                 int `bson:"consolidated slot joins"`
+	ConsolidatedSlotUnbufferedWrites      int `bson:"consolidated slot unbuffered writes"`
+	LogBytesOfPayloadData                 int `bson:"log bytes of payload data"`
+	LogBytesWritten                       int `bson:"log bytes written"`
+	LogFilesManuallyZeroFilled            int `bson:"log files manually zero-filled"`
+	LogFlushOperations                    int `bson:"log flush operations"`
+	LogForceWriteOperations               int `bson:"log force write operations"`
+	LogForceWriteOperationsSkipped        int `bson:"log force write operations skipped"`
+	LogRecordsCompressed                  int `bson:"log records compressed"`
+	LogRecordsNotCompressed               int `bson:"log records not compressed"`
+	LogRecordsTooSmallToCompress          int `bson:"log records too small to compress"`
+	LogReleaseAdvancesWriteLSN            int `bson:"log release advances write LSN"`
+	LogScanOperations                     int `bson:"log scan operations"`
+	LogScanRecordsRequiringTwoReads       int `bson:"log scan records requiring two reads"`
+	LogServerThreadAdvancesWriteLSN       int `bson:"log server thread advances write LSN"`
+	LogServerThreadWriteLSNWalkSkipped    int `bson:"log server thread write LSN walk skipped"`
+	LogSyncOperations                     int `bson:"log sync operations"`
+	LogSyncTimeDurationUsecs              int `bson:"log sync time duration (usecs"`
+	LogSyncDirOperations                  int `bson:"log sync_dir operations"`
+	LogSyncDirTimeDurationUsecs           int `bson:"log sync_dir time duration (usecs"`
+	LogWriteOperations                    int `bson:"log write operations"`
+	LoggingBytesConsolidated              int `bson:"logging bytes consolidated"`
+	MaximumLogFileSize                    int `bson:"maximum log file size"`
+	NumberOfPreAllocatedLogFilesToCreate  int `bson:"number of pre-allocated log files to create"`
+	PreAllocatedLogFilesNotReadyAndMissed int `bson:"pre-allocated log files not ready and missed"`
+	PreAllocatedLogFilesPrepared          int `bson:"pre-allocated log files prepared"`
+	PreAllocatedLogFilesUsed              int `bson:"pre-allocated log files used"`
+	RecordsProcessedByLogScan             int `bson:"records processed by log scan"`
+	TotalInMemorySizeOfCompressedRecords  int `bson:"total in-memory size of compressed records"`
+	TotalLogBufferSize                    int `bson:"total log buffer size"`
+	TotalSizeOfCompressedRecords          int `bson:"total size of compressed records"`
+	WrittenSlotsCoalesced                 int `bson:"written slots coalesced"`
+	YieldsWaitingForPreviousLogFileClose  int `bson:"yields waiting for previous log file close"`
 }
 
 // Reconciliation contains stats about Reconciliation
 type Reconciliation struct {
-	FastPathPagesDeleted               int `json:"fast-path pages deleted"`
-	PageReconciliationCalls            int `json:"page reconciliation calls"`
-	PageReconciliationCallsForEviction int `json:"page reconciliation calls for eviction"`
-	PagesDeleted                       int `json:"pages deleted"`
-	SplitBytesCurrentlyAwaitingFree    int `json:"split bytes currently awaiting free"`
-	SplitObjectsCurrentlyAwaitingFree  int `json:"split objects currently awaiting free"`
+	FastPathPagesDeleted               int `bson:"fast-path pages deleted"`
+	PageReconciliationCalls            int `bson:"page reconciliation calls"`
+	PageReconciliationCallsForEviction int `bson:"page reconciliation calls for eviction"`
+	PagesDeleted                       int `bson:"pages deleted"`
+	SplitBytesCurrentlyAwaitingFree    int `bson:"split bytes currently awaiting free"`
+	SplitObjectsCurrentlyAwaitingFree  int `bson:"split objects currently awaiting free"`
 }
 
 // Session contains stats about Session
 type Session struct {
-	OpenCursorCount               int `json:"open cursor count"`
-	OpenSessionCount              int `json:"open session count"`
-	TableCompactFailedCalls       int `json:"table compact failed calls"`
-	TableCompactSuccessfulCalls   int `json:"table compact successful calls"`
-	TableCreateFailedCalls        int `json:"table create failed calls"`
-	TableCreateSuccessfulCalls    int `json:"table create successful calls"`
-	TableDropFailedCalls          int `json:"table drop failed calls"`
-	TableDropSuccessfulCalls      int `json:"table drop successful calls"`
-	TableRebalanceFailedCalls     int `json:"table rebalance failed calls"`
-	TableRebalanceSuccessfulCalls int `json:"table rebalance successful calls"`
-	TableRenameFailedCalls        int `json:"table rename failed calls"`
-	TableRenameSuccessfulCalls    int `json:"table rename successful calls"`
-	TableSalvageFailedCalls       int `json:"table salvage failed calls"`
-	TableSalvageSuccessfulCalls   int `json:"table salvage successful calls"`
-	TableTruncateFailedCalls      int `json:"table truncate failed calls"`
-	TableTruncateSuccessfulCalls  int `json:"table truncate successful calls"`
-	TableVerifyFailedCalls        int `json:"table verify failed calls"`
-	TableVerifySuccessfulCalls    int `json:"table verify successful calls"`
+	OpenCursorCount               int `bson:"open cursor count"`
+	OpenSessionCount              int `bson:"open session count"`
+	TableCompactFailedCalls       int `bson:"table compact failed calls"`
+	TableCompactSuccessfulCalls   int `bson:"table compact successful calls"`
+	TableCreateFailedCalls        int `bson:"table create failed calls"`
+	TableCreateSuccessfulCalls    int `bson:"table create successful calls"`
+	TableDropFailedCalls          int `bson:"table drop failed calls"`
+	TableDropSuccessfulCalls      int `bson:"table drop successful calls"`
+	TableRebalanceFailedCalls     int `bson:"table rebalance failed calls"`
+	TableRebalanceSuccessfulCalls int `bson:"table rebalance successful calls"`
+	TableRenameFailedCalls        int `bson:"table rename failed calls"`
+	TableRenameSuccessfulCalls    int `bson:"table rename successful calls"`
+	TableSalvageFailedCalls       int `bson:"table salvage failed calls"`
+	TableSalvageSuccessfulCalls   int `bson:"table salvage successful calls"`
+	TableTruncateFailedCalls      int `bson:"table truncate failed calls"`
+	TableTruncateSuccessfulCalls  int `bson:"table truncate successful calls"`
+	TableVerifyFailedCalls        int `bson:"table verify failed calls"`
+	TableVerifySuccessfulCalls    int `bson:"table verify successful calls"`
 }
 
 // ThreadState contains stats about ThreadState
 type ThreadState struct {
-	ActiveFilesystemFsyncCalls int `json:"active filesystem fsync calls"`
-	ActiveFilesystemReadCalls  int `json:"active filesystem read calls"`
-	ActiveFilesystemWriteCalls int `json:"active filesystem write calls"`
+	ActiveFilesystemFsyncCalls int `bson:"active filesystem fsync calls"`
+	ActiveFilesystemReadCalls  int `bson:"active filesystem read calls"`
+	ActiveFilesystemWriteCalls int `bson:"active filesystem write calls"`
 }
 
 // ThreadYield contains stats about ThreadYield
 type ThreadYield struct {
-	PageAcquireBusyBlocked       int `json:"page acquire busy blocked"`
-	PageAcquireEvictionBlocked   int `json:"page acquire eviction blocked"`
-	PageAcquireLockedBlocked     int `json:"page acquire locked blocked"`
-	PageAcquireReadBlocked       int `json:"page acquire read blocked"`
-	PageAcquireTimeSleepingUsecs int `json:"page acquire time sleeping (usecs"`
+	PageAcquireBusyBlocked       int `bson:"page acquire busy blocked"`
+	PageAcquireEvictionBlocked   int `bson:"page acquire eviction blocked"`
+	PageAcquireLockedBlocked     int `bson:"page acquire locked blocked"`
+	PageAcquireReadBlocked       int `bson:"page acquire read blocked"`
+	PageAcquireTimeSleepingUsecs int `bson:"page acquire time sleeping (usecs"`
 }
 
 // Transaction contains stats about Transaction
 type Transaction struct {
-	NumberOfNamedSnapshotsCreated                                             int `json:"number of named snapshots created"`
-	NumberOfNamedSnapshotsDropped                                             int `json:"number of named snapshots dropped"`
-	TransactionBegins                                                         int `json:"transaction begins"`
-	TransactionCheckpointCurrentlyRunning                                     int `json:"transaction checkpoint currently running"`
-	TransactionCheckpointGeneration                                           int `json:"transaction checkpoint generation"`
-	TransactionCheckpointMaxTimeMsecs                                         int `json:"transaction checkpoint max time (msecs"`
-	TransactionCheckpointMinTimeMsecs                                         int `json:"transaction checkpoint min time (msecs"`
-	TransactionCheckpointMostRecentTimeMsecs                                  int `json:"transaction checkpoint most recent time (msecs"`
-	TransactionCheckpointScrubDirtyTarget                                     int `json:"transaction checkpoint scrub dirty target"`
-	TransactionCheckpointScrubTimeMsecs                                       int `json:"transaction checkpoint scrub time (msecs"`
-	TransactionCheckpointTotalTimeMsecs                                       int `json:"transaction checkpoint total time (msecs"`
-	TransactionCheckpoints                                                    int `json:"transaction checkpoints"`
-	TransactionFailuresDueToCacheOverflow                                     int `json:"transaction failures due to cache overflow"`
-	TransactionFsyncCallsForCheckpointAfterAllocatingTheTransactionID         int `json:"transaction fsync calls for checkpoint after allocating the transaction ID"`
-	TransactionFsyncDurationForCheckpointAfterAllocatingTheTransactionIDUsecs int `json:"transaction fsync duration for checkpoint after allocating the transaction ID (usecs"`
-	TransactionRangeOfIDsCurrentlyPinned                                      int `json:"transaction range of IDs currently pinned"`
-	TransactionRangeOfIDsCurrentlyPinnedByACheckpoint                         int `json:"transaction range of IDs currently pinned by a checkpoint"`
-	TransactionRangeOfIDsCurrentlyPinnedByNamedSnapshots                      int `json:"transaction range of IDs currently pinned by named snapshots"`
-	TransactionSyncCalls                                                      int `json:"transaction sync calls"`
-	TransactionsCommitted                                                     int `json:"transactions committed"`
-	TransactionsRolledBack                                                    int `json:"transactions rolled back"`
+	NumberOfNamedSnapshotsCreated                                             int `bson:"number of named snapshots created"`
+	NumberOfNamedSnapshotsDropped                                             int `bson:"number of named snapshots dropped"`
+	TransactionBegins                                                         int `bson:"transaction begins"`
+	TransactionCheckpointCurrentlyRunning                                     int `bson:"transaction checkpoint currently running"`
+	TransactionCheckpointGeneration                                           int `bson:"transaction checkpoint generation"`
+	TransactionCheckpointMaxTimeMsecs                                         int `bson:"transaction checkpoint max time (msecs"`
+	TransactionCheckpointMinTimeMsecs                                         int `bson:"transaction checkpoint min time (msecs"`
+	TransactionCheckpointMostRecentTimeMsecs                                  int `bson:"transaction checkpoint most recent time (msecs"`
+	TransactionCheckpointScrubDirtyTarget                                     int `bson:"transaction checkpoint scrub dirty target"`
+	TransactionCheckpointScrubTimeMsecs                                       int `bson:"transaction checkpoint scrub time (msecs"`
+	TransactionCheckpointTotalTimeMsecs                                       int `bson:"transaction checkpoint total time (msecs"`
+	TransactionCheckpoints                                                    int `bson:"transaction checkpoints"`
+	TransactionFailuresDueToCacheOverflow                                     int `bson:"transaction failures due to cache overflow"`
+	TransactionFsyncCallsForCheckpointAfterAllocatingTheTransactionID         int `bson:"transaction fsync calls for checkpoint after allocating the transaction ID"`
+	TransactionFsyncDurationForCheckpointAfterAllocatingTheTransactionIDUsecs int `bson:"transaction fsync duration for checkpoint after allocating the transaction ID (usecs"`
+	TransactionRangeOfIDsCurrentlyPinned                                      int `bson:"transaction range of IDs currently pinned"`
+	TransactionRangeOfIDsCurrentlyPinnedByACheckpoint                         int `bson:"transaction range of IDs currently pinned by a checkpoint"`
+	TransactionRangeOfIDsCurrentlyPinnedByNamedSnapshots                      int `bson:"transaction range of IDs currently pinned by named snapshots"`
+	TransactionSyncCalls                                                      int `bson:"transaction sync calls"`
+	TransactionsCommitted                                                     int `bson:"transactions committed"`
+	TransactionsRolledBack                                                    int `bson:"transactions rolled back"`
 }
 
 // Write contains stats about Write
 type Write struct {
-	Out          int `json:"out"`
-	Available    int `json:"available"`
-	TotalTickets int `json:"totalTickets"`
+	Out          int `bson:"out"`
+	Available    int `bson:"available"`
+	TotalTickets int `bson:"totalTickets"`
 }
 
 // Read contains stats about Read
 type Read struct {
-	Out          int `json:"out"`
-	Available    int `json:"available"`
-	TotalTickets int `json:"totalTickets"`
+	Out          int `bson:"out"`
+	Available    int `bson:"available"`
+	TotalTickets int `bson:"totalTickets"`
 }
 
 // ConcurrentTransactions contains stats about ConcurrentTransactions
 type ConcurrentTransactions struct {
-	Write *Write `json:"write"`
-	Read  *Read  `json:"read"`
+	Write *Write `bson:"write"`
+	Read  *Read  `bson:"read"`
 }
 
 // WiredTiger contains stats about WiredTiger
 type WiredTiger struct {
-	URI                    string                  `json:"uri"`
-	LSM                    *LSM                    `json:"LSM"`
-	Async                  *Async                  `json:"async"`
-	BlockManager           *BlockManager           `json:"block-manager"`
-	Cache                  *Cache                  `json:"cache"`
-	Connection             *Connection             `json:"connection"`
-	Cursor                 *WireCursor             `json:"cursor"`
-	DataHandle             *DataHandle             `json:"data-handle"`
-	Log                    *Log                    `json:"log"`
-	Reconciliation         *Reconciliation         `json:"reconciliation"`
-	Session                *Session                `json:"session"`
-	ThreadState            *ThreadState            `json:"thread-state"`
-	ThreadYield            *ThreadYield            `json:"thread-yield"`
-	Transaction            *Transaction            `json:"transaction"`
-	ConcurrentTransactions *ConcurrentTransactions `json:"concurrentTransactions"`
+	URI                    string                  `bson:"uri"`
+	LSM                    *LSM                    `bson:"LSM"`
+	Async                  *Async                  `bson:"async"`
+	BlockManager           *BlockManager           `bson:"block-manager"`
+	Cache                  *Cache                  `bson:"cache"`
+	Connection             *Connection             `bson:"connection"`
+	Cursor                 *WireCursor             `bson:"cursor"`
+	DataHandle             *DataHandle             `bson:"data-handle"`
+	Log                    *Log                    `bson:"log"`
+	Reconciliation         *Reconciliation         `bson:"reconciliation"`
+	Session                *Session                `bson:"session"`
+	ThreadState            *ThreadState            `bson:"thread-state"`
+	ThreadYield            *ThreadYield            `bson:"thread-yield"`
+	Transaction            *Transaction            `bson:"transaction"`
+	ConcurrentTransactions *ConcurrentTransactions `bson:"concurrentTransactions"`
 }
 
 // BuildInfo contains stats about BuildInfo
 type BuildInfo struct {
-	Failed int `json:"failed"`
-	Total  int `json:"total"`
+	Failed int `bson:"failed"`
+	Total  int `bson:"total"`
 }
 
 // GetLog contains stats about GetLog
 type GetLog struct {
-	Failed int `json:"failed"`
-	Total  int `json:"total"`
+	Failed int `bson:"failed"`
+	Total  int `bson:"total"`
 }
 
 // IsMaster contains stats about IsMaster
 type IsMaster struct {
-	Failed int `json:"failed"`
-	Total  int `json:"total"`
+	Failed int `bson:"failed"`
+	Total  int `bson:"total"`
 }
 
 // ReplSetGetStatus contains stats about ReplSetGetStatus
 type ReplSetGetStatus struct {
-	Failed int `json:"failed"`
-	Total  int `json:"total"`
+	Failed int `bson:"failed"`
+	Total  int `bson:"total"`
 }
 
 // ServerStatusR contains stats about ServerStatusR
 type ServerStatusR struct {
-	Failed int `json:"failed"`
-	Total  int `json:"total"`
+	Failed int `bson:"failed"`
+	Total  int `bson:"total"`
 }
 
 // Whatsmyuri contains stats about Whatsmyuri
 type Whatsmyuri struct {
-	Failed int `json:"failed"`
-	Total  int `json:"total"`
+	Failed int `bson:"failed"`
+	Total  int `bson:"total"`
 }
 
 // Commands contains stats about Commands
 type Commands struct {
-	BuildInfo        *BuildInfo        `json:"buildInfo"`
-	GetLog           *GetLog           `json:"getLog"`
-	IsMaster         *IsMaster         `json:"isMaster"`
-	ReplSetGetStatus *ReplSetGetStatus `json:"replSetGetStatus"`
-	ServerStatus     *ServerStatusR    `json:"serverStatus"`
-	Whatsmyuri       *Whatsmyuri       `json:"whatsmyuri"`
+	BuildInfo        *BuildInfo        `bson:"buildInfo"`
+	GetLog           *GetLog           `bson:"getLog"`
+	IsMaster         *IsMaster         `bson:"isMaster"`
+	ReplSetGetStatus *ReplSetGetStatus `bson:"replSetGetStatus"`
+	ServerStatus     *ServerStatusR    `bson:"serverStatus"`
+	Whatsmyuri       *Whatsmyuri       `bson:"whatsmyuri"`
 }
 
 // Cursor contains stats about Cursor
 type Cursor struct {
-	TimedOut int   `json:"timedOut"`
-	Open     *Open `json:"open"`
+	TimedOut int   `bson:"timedOut"`
+	Open     *Open `bson:"open"`
 }
 
 // Open contains stats about Open
 type Open struct {
-	NoTimeout int `json:"noTimeout"`
-	Pinned    int `json:"pinned"`
-	Total     int `json:"total"`
+	NoTimeout int `bson:"noTimeout"`
+	Pinned    int `bson:"pinned"`
+	Total     int `bson:"total"`
 }
 
 // Document contains stats about Document
 type Document struct {
-	Deleted  int `json:"deleted"`
-	Inserted int `json:"inserted"`
-	Returned int `json:"returned"`
-	Updated  int `json:"updated"`
+	Deleted  int `bson:"deleted"`
+	Inserted int `bson:"inserted"`
+	Returned int `bson:"returned"`
+	Updated  int `bson:"updated"`
 }
 
 // Wtime contains stats about Wtime
 type Wtime struct {
-	Num         int `json:"num"`
-	TotalMillis int `json:"totalMillis"`
+	Num         int `bson:"num"`
+	TotalMillis int `bson:"totalMillis"`
 }
 
 // GetLastError contains stats about GetLastError
 type GetLastError struct {
-	Wtime     *Wtime `json:"wtime"`
-	Wtimeouts int    `json:"wtimeouts"`
+	Wtime     *Wtime `bson:"wtime"`
+	Wtimeouts int    `bson:"wtimeouts"`
 }
 
 // Operation contains stats about Operation
 type Operation struct {
-	Fastmod        int `json:"fastmod"`
-	Idhack         int `json:"idhack"`
-	ScanAndOrder   int `json:"scanAndOrder"`
-	WriteConflicts int `json:"writeConflicts"`
+	Fastmod        int `bson:"fastmod"`
+	Idhack         int `bson:"idhack"`
+	ScanAndOrder   int `bson:"scanAndOrder"`
+	WriteConflicts int `bson:"writeConflicts"`
 }
 
 // QueryExecutor contains stats about QueryExecutor
 type QueryExecutor struct {
-	Scanned        int `json:"scanned"`
-	ScannedObjects int `json:"scannedObjects"`
+	Scanned        int `bson:"scanned"`
+	ScannedObjects int `bson:"scannedObjects"`
 }
 
 // Record contains stats about Record
 type Record struct {
-	Moves int `json:"moves"`
+	Moves int `bson:"moves"`
 }
 
 // Counters contains stats about Counters
 type Counters struct {
-	EventCreated       int `json:"eventCreated"`
-	EventWait          int `json:"eventWait"`
-	Cancels            int `json:"cancels"`
-	Waits              int `json:"waits"`
-	ScheduledNetCmd    int `json:"scheduledNetCmd"`
-	ScheduledDBWork    int `json:"scheduledDBWork"`
-	ScheduledXclWork   int `json:"scheduledXclWork"`
-	ScheduledWorkAt    int `json:"scheduledWorkAt"`
-	ScheduledWork      int `json:"scheduledWork"`
-	SchedulingFailures int `json:"schedulingFailures"`
+	EventCreated       int `bson:"eventCreated"`
+	EventWait          int `bson:"eventWait"`
+	Cancels            int `bson:"cancels"`
+	Waits              int `bson:"waits"`
+	ScheduledNetCmd    int `bson:"scheduledNetCmd"`
+	ScheduledDBWork    int `bson:"scheduledDBWork"`
+	ScheduledXclWork   int `bson:"scheduledXclWork"`
+	ScheduledWorkAt    int `bson:"scheduledWorkAt"`
+	ScheduledWork      int `bson:"scheduledWork"`
+	SchedulingFailures int `bson:"schedulingFailures"`
 }
 
 // Queues contains stats about Queues
 type Queues struct {
-	NetworkInProgress   int `json:"networkInProgress"`
-	DbWorkInProgress    int `json:"dbWorkInProgress"`
-	ExclusiveInProgress int `json:"exclusiveInProgress"`
-	Sleepers            int `json:"sleepers"`
-	Ready               int `json:"ready"`
-	Free                int `json:"free"`
+	NetworkInProgress   int `bson:"networkInProgress"`
+	DbWorkInProgress    int `bson:"dbWorkInProgress"`
+	ExclusiveInProgress int `bson:"exclusiveInProgress"`
+	Sleepers            int `bson:"sleepers"`
+	Ready               int `bson:"ready"`
+	Free                int `bson:"free"`
 }
 
 // Executor contains stats about Executor
 type Executor struct {
-	Counters         *Counters `json:"counters"`
-	Queues           *Queues   `json:"queues"`
-	UnsignaledEvents int       `json:"unsignaledEvents"`
-	EventWaiters     int       `json:"eventWaiters"`
-	ShuttingDown     bool      `json:"shuttingDown"`
-	NetworkInterface string    `json:"networkInterface"`
+	Counters         *Counters `bson:"counters"`
+	Queues           *Queues   `bson:"queues"`
+	UnsignaledEvents int       `bson:"unsignaledEvents"`
+	EventWaiters     int       `bson:"eventWaiters"`
+	ShuttingDown     bool      `bson:"shuttingDown"`
+	NetworkInterface string    `bson:"networkInterface"`
 }
 
 // Batches contains stats about Batches
 type Batches struct {
-	Num         int `json:"num"`
-	TotalMillis int `json:"totalMillis"`
+	Num         int `bson:"num"`
+	TotalMillis int `bson:"totalMillis"`
 }
 
 // Apply contains stats about Apply
 type Apply struct {
-	Batches *Batches `json:"batches"`
-	Ops     int      `json:"ops"`
+	Batches *Batches `bson:"batches"`
+	Ops     int      `bson:"ops"`
 }
 
 // Buffer contains stats about Buffer
 type Buffer struct {
-	Count        int `json:"count"`
-	MaxSizeBytes int `json:"maxSizeBytes"`
-	SizeBytes    int `json:"sizeBytes"`
+	Count        int `bson:"count"`
+	MaxSizeBytes int `bson:"maxSizeBytes"`
+	SizeBytes    int `bson:"sizeBytes"`
 }
 
 // Getmores contains stats about Getmores
 type Getmores struct {
-	Num         int `json:"num"`
-	TotalMillis int `json:"totalMillis"`
+	Num         int `bson:"num"`
+	TotalMillis int `bson:"totalMillis"`
 }
 
 // ReplNetwork contains stats about ReplNetwork
 type ReplNetwork struct {
-	Bytes          int       `json:"bytes"`
-	Getmores       *Getmores `json:"getmores"`
-	Ops            int       `json:"ops"`
-	ReadersCreated int       `json:"readersCreated"`
+	Bytes          int       `bson:"bytes"`
+	Getmores       *Getmores `bson:"getmores"`
+	Ops            int       `bson:"ops"`
+	ReadersCreated int       `bson:"readersCreated"`
 }
 
 // Docs contains stats about Docs
 type Docs struct {
-	Num         int `json:"num"`
-	TotalMillis int `json:"totalMillis"`
+	Num         int `bson:"num"`
+	TotalMillis int `bson:"totalMillis"`
 }
 
 // Indexes contains stats about Indexes
 type Indexes struct {
-	Num         int `json:"num"`
-	TotalMillis int `json:"totalMillis"`
+	Num         int `bson:"num"`
+	TotalMillis int `bson:"totalMillis"`
 }
 
 // Preload contains stats about Preload
 type Preload struct {
-	Docs    *Docs    `json:"docs"`
-	Indexes *Indexes `json:"indexes"`
+	Docs    *Docs    `bson:"docs"`
+	Indexes *Indexes `bson:"indexes"`
 }
 
 // Repl contains stats about Repl
 type Repl struct {
-	Executor *Executor    `json:"executor"`
-	Apply    *Apply       `json:"apply"`
-	Buffer   *Buffer      `json:"buffer"`
-	Network  *ReplNetwork `json:"network"`
-	Preload  *Preload     `json:"preload"`
+	Executor *Executor    `bson:"executor"`
+	Apply    *Apply       `bson:"apply"`
+	Buffer   *Buffer      `bson:"buffer"`
+	Network  *ReplNetwork `bson:"network"`
+	Preload  *Preload     `bson:"preload"`
 }
 
 // Search contains stats about Search
 type Search struct {
-	BucketExhausted int `json:"bucketExhausted"`
-	Requests        int `json:"requests"`
-	Scanned         int `json:"scanned"`
+	BucketExhausted int `bson:"bucketExhausted"`
+	Requests        int `bson:"requests"`
+	Scanned         int `bson:"scanned"`
 }
 
 // Freelist contains stats about Freelist
 type Freelist struct {
-	Search *Search `json:"search"`
+	Search *Search `bson:"search"`
 }
 
 // Storage contains stats about Storage
 type Storage struct {
-	Freelist *Freelist `json:"freelist"`
+	Freelist *Freelist `bson:"freelist"`
 }
 
 // TTL contains stats about TTL
 type TTL struct {
-	DeletedDocuments int `json:"deletedDocuments"`
-	Passes           int `json:"passes"`
+	DeletedDocuments int `bson:"deletedDocuments"`
+	Passes           int `bson:"passes"`
 }
 
 // Metrics contains stats about Metrics
 type Metrics struct {
-	Commands      *Commands      `json:"commands"`
-	Cursor        *Cursor        `json:"cursor"`
-	Document      *Document      `json:"document"`
-	GetLastError  *GetLastError  `json:"getLastError"`
-	Operation     *Operation     `json:"operation"`
-	QueryExecutor *QueryExecutor `json:"queryExecutor"`
-	Record        *Record        `json:"record"`
-	Repl          *Repl          `json:"repl"`
-	Storage       *Storage       `json:"storage"`
-	TTL           *TTL           `json:"ttl"`
+	Commands      *Commands      `bson:"commands"`
+	Cursor        *Cursor        `bson:"cursor"`
+	Document      *Document      `bson:"document"`
+	GetLastError  *GetLastError  `bson:"getLastError"`
+	Operation     *Operation     `bson:"operation"`
+	QueryExecutor *QueryExecutor `bson:"queryExecutor"`
+	Record        *Record        `bson:"record"`
+	Repl          *Repl          `bson:"repl"`
+	Storage       *Storage       `bson:"storage"`
+	TTL           *TTL           `bson:"ttl"`
 }
 
 // ServerStatus contains stats about database
 type ServerStatus struct {
-	Host              string          `json:"host"`
-	AdvisoryHostFQDNs []interface{}   `json:"advisoryHostFQDNs"`
-	Version           string          `json:"version"`
-	Process           string          `json:"process"`
-	Pid               int             `json:"pid"`
-	Uptime            int             `json:"uptime"`
-	UptimeMillis      int             `json:"uptimeMillis"`
-	UptimeEstimate    int             `json:"uptimeEstimate"`
-	LocalTime         time.Time       `json:"localTime"`
-	Asserts           *Asserts        `json:"asserts"`
-	Connections       *Connections    `json:"connections"`
-	Extra_Info        *Extra_Info     `json:"extra_info"`
-	GlobalLock        *GlobalLock     `json:"globalLock"`
-	Locks             *Locks          `json:"locks"`
-	Network           *Network        `json:"network"`
-	Opcounters        *Opcounters     `json:"opcounters"`
-	OpcountersRepl    *OpcountersRepl `json:"opcountersRepl"`
-	StorageEngine     *StorageEngine  `json:"storageEngine"`
-	Tcmalloc          *Tcmalloc       `json:"tcmalloc"`
-	WiredTiger        *WiredTiger     `json:"wiredTiger"`
-	WriteBacksQueued  bool            `json:"writeBacksQueued"`
-	Mem               *Mem            `json:"mem"`
-	Metrics           *Metrics        `json:"metrics"`
-	Ok                int             `json:"ok"`
+	Host              string          `bson:"host"`
+	AdvisoryHostFQDNs []interface{}   `bson:"advisoryHostFQDNs"`
+	Version           string          `bson:"version"`
+	Process           string          `bson:"process"`
+	Pid               int             `bson:"pid"`
+	Uptime            int             `bson:"uptime"`
+	UptimeMillis      int             `bson:"uptimeMillis"`
+	UptimeEstimate    int             `bson:"uptimeEstimate"`
+	LocalTime         time.Time       `bson:"localTime"`
+	Asserts           *Asserts        `bson:"asserts"`
+	Connections       *Connections    `bson:"connections"`
+	Extra_Info        *Extra_Info     `bson:"extra_info"`
+	GlobalLock        *GlobalLock     `bson:"globalLock"`
+	Locks             *Locks          `bson:"locks"`
+	Network           *Network        `bson:"network"`
+	Opcounters        *Opcounters     `bson:"opcounters"`
+	OpcountersRepl    *OpcountersRepl `bson:"opcountersRepl"`
+	StorageEngine     *StorageEngine  `bson:"storageEngine"`
+	Tcmalloc          *Tcmalloc       `bson:"tcmalloc"`
+	WiredTiger        *WiredTiger     `bson:"wiredTiger"`
+	WriteBacksQueued  bool            `bson:"writeBacksQueued"`
+	Mem               *Mem            `bson:"mem"`
+	Metrics           *Metrics        `bson:"metrics"`
+	Ok                int             `bson:"ok"`
 }

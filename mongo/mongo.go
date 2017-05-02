@@ -17,6 +17,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+
 package mongo
 
 import (
@@ -26,6 +27,7 @@ import (
 	"gopkg.in/mgo.v2/bson"
 )
 
+// debug iza- go on triger test
 // Mongo is an interface of Mongo calls
 type Mongo interface {
 	GetConnection(URL, AuthPassword, AuthUserName string) (*mgo.Session, error)
@@ -51,6 +53,7 @@ func GetConnection(URL, AuthPassword, AuthUserName string) (*mgo.Session, error)
 // GetServerStatus returns server status
 func GetServerStatus(session *mgo.Session) (ServerStatus, error) {
 	result := ServerStatus{}
+
 	if err := session.Run(bson.D{{"serverStatus", 1}, {"tcmalloc", 1}}, &result); err != nil {
 		return result, err
 	}
