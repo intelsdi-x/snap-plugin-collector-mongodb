@@ -1,0 +1,235 @@
+{
+        "host" : "iza-devmachine",
+        "version" : "2.6.10",
+        "process" : "mongod",
+        "pid" : NumberLong(16316),
+        "uptime" : 1283,
+        "uptimeMillis" : NumberLong(1283425),
+        "uptimeEstimate" : 1269,
+        "localTime" : ISODate("2017-04-23T12:30:21.869Z"),
+        "asserts" : {
+                "regular" : 0,
+                "warning" : 0,
+                "msg" : 0,
+                "user" : 0,
+                "rollovers" : 0
+        },
+        "backgroundFlushing" : {
+                "flushes" : 21,
+                "total_ms" : 4,
+                "average_ms" : 0.19047619047619047,
+                "last_ms" : 0,
+                "last_finished" : ISODate("2017-04-23T12:29:58.456Z")
+        },
+        "connections" : {
+                "current" : 1,
+                "available" : 818,
+                "totalCreated" : NumberLong(125)
+        },
+        "cursors" : {
+                "note" : "deprecated, use server status metrics",
+                "clientCursors_size" : 0,
+                "totalOpen" : 0,
+                "pinned" : 0,
+                "totalNoTimeout" : 0,
+                "timedOut" : 0
+        },
+        "dur" : {
+                "commits" : 30,
+                "journaledMB" : 0,
+                "writeToDataFilesMB" : 0,
+                "compression" : 0,
+                "commitsInWriteLock" : 0,
+                "earlyCommits" : 0,
+                "timeMs" : {
+                        "dt" : 3070,
+                        "prepLogBuffer" : 0,
+                        "writeToJournal" : 0,
+                        "writeToDataFiles" : 0,
+                        "remapPrivateView" : 0
+                }
+        },
+        "extra_info" : {
+                "note" : "fields vary by platform",
+                "heap_usage_bytes" : 62621424,
+                "page_faults" : 25
+        },
+        "globalLock" : {
+                "totalTime" : NumberLong(1283425000),
+                "lockTime" : NumberLong(71451),
+                "currentQueue" : {
+                        "total" : 0,
+                        "readers" : 0,
+                        "writers" : 0
+                },
+                "activeClients" : {
+                        "total" : 0,
+                        "readers" : 0,
+                        "writers" : 0
+                }
+        },
+        "indexCounters" : {
+                "accesses" : 2,
+                "hits" : 2,
+                "misses" : 0,
+                "resets" : 0,
+                "missRatio" : 0
+        },
+        "locks" : {
+                "." : {
+                        "timeLockedMicros" : {
+                                "R" : NumberLong(20979),
+                                "W" : NumberLong(71451)
+                        },
+                        "timeAcquiringMicros" : {
+                                "R" : NumberLong(11836),
+                                "W" : NumberLong(2149)
+                        }
+                },
+                "admin" : {
+                        "timeLockedMicros" : {
+                                "r" : NumberLong(1447),
+                                "w" : NumberLong(0)
+                        },
+                        "timeAcquiringMicros" : {
+                                "r" : NumberLong(152),
+                                "w" : NumberLong(0)
+                        }
+                },
+                "local" : {
+                        "timeLockedMicros" : {
+                                "r" : NumberLong(4531),
+                                "w" : NumberLong(0)
+                        },
+                        "timeAcquiringMicros" : {
+                                "r" : NumberLong(1659),
+                                "w" : NumberLong(0)
+                        }
+                }
+        },
+        "network" : {
+                "bytesIn" : 30961,
+                "bytesOut" : 587972,
+                "numRequests" : 502
+        },
+        "opcounters" : {
+                "insert" : 1,
+                "query" : 43,
+                "update" : 0,
+                "delete" : 0,
+                "getmore" : 0,
+                "command" : 504
+        },
+        "opcountersRepl" : {
+                "insert" : 0,
+                "query" : 0,
+                "update" : 0,
+                "delete" : 0,
+                "getmore" : 0,
+                "command" : 0
+        },
+        "recordStats" : {
+                "accessesNotInMemory" : 0,
+                "pageFaultExceptionsThrown" : 0,
+                "admin" : {
+                        "accessesNotInMemory" : 0,
+                        "pageFaultExceptionsThrown" : 0
+                },
+                "local" : {
+                        "accessesNotInMemory" : 0,
+                        "pageFaultExceptionsThrown" : 0
+                }
+        },
+        "writeBacksQueued" : false,
+        "mem" : {
+                "bits" : 64,
+                "resident" : 51,
+                "virtual" : 382,
+                "supported" : true,
+                "mapped" : 80,
+                "mappedWithJournal" : 160
+        },
+        "metrics" : {
+                "cursor" : {
+                        "timedOut" : NumberLong(0),
+                        "open" : {
+                                "noTimeout" : NumberLong(0),
+                                "pinned" : NumberLong(0),
+                                "total" : NumberLong(0)
+                        }
+                },
+                "document" : {
+                        "deleted" : NumberLong(0),
+                        "inserted" : NumberLong(1),
+                        "returned" : NumberLong(0),
+                        "updated" : NumberLong(0)
+                },
+                "getLastError" : {
+                        "wtime" : {
+                                "num" : 0,
+                                "totalMillis" : 0
+                        },
+                        "wtimeouts" : NumberLong(0)
+                },
+                "operation" : {
+                        "fastmod" : NumberLong(0),
+                        "idhack" : NumberLong(0),
+                        "scanAndOrder" : NumberLong(0)
+                },
+                "queryExecutor" : {
+                        "scanned" : NumberLong(0),
+                        "scannedObjects" : NumberLong(0)
+                },
+                "record" : {
+                        "moves" : NumberLong(0)
+                },
+                "repl" : {
+                        "apply" : {
+                                "batches" : {
+                                        "num" : 0,
+                                        "totalMillis" : 0
+                                },
+                                "ops" : NumberLong(0)
+                        },
+                        "buffer" : {
+                                "count" : NumberLong(0),
+                                "maxSizeBytes" : 268435456,
+                                "sizeBytes" : NumberLong(0)
+                        },
+                        "network" : {
+                                "bytes" : NumberLong(0),
+                                "getmores" : {
+                                        "num" : 0,
+                                        "totalMillis" : 0
+                                },
+                                "ops" : NumberLong(0),
+                                "readersCreated" : NumberLong(0)
+                        },
+                        "preload" : {
+                                "docs" : {
+                                        "num" : 0,
+                                        "totalMillis" : 0
+                                },
+                                "indexes" : {
+                                        "num" : 0,
+                                        "totalMillis" : 0
+                                }
+                        }
+                },
+                "storage" : {
+                        "freelist" : {
+                                "search" : {
+                                        "bucketExhausted" : NumberLong(0),
+                                        "requests" : NumberLong(6),
+                                        "scanned" : NumberLong(11)
+                                }
+                        }
+                },
+                "ttl" : {
+                        "deletedDocuments" : NumberLong(0),
+                        "passes" : NumberLong(21)
+                }
+        },
+        "ok" : 1
+}
+
