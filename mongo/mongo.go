@@ -26,6 +26,7 @@ import (
 	"gopkg.in/mgo.v2/bson"
 )
 
+//Debug - this line i to trigger Travis
 // Mongo is an interface of Mongo calls
 type Mongo interface {
 	GetConnection(URL, AuthPassword, AuthUserName string) (*mgo.Session, error)
