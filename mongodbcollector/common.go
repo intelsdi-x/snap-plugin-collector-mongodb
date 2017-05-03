@@ -65,7 +65,7 @@ func createMeasurement(mt plugin.Metric, value interface{}, ns plugin.Namespace,
 func filterNamespace(metricType string, mts []plugin.Metric) (int, []plugin.Metric) {
 	filteredMetrics := []plugin.Metric{}
 	for _, m := range mts {
-		if m.Namespace.Strings()[nsMetricPostion] == metricType {
+		if m.Namespace.Strings()[nsMetricPosition] == metricType {
 			filteredMetrics = append(filteredMetrics, m)
 		}
 	}
