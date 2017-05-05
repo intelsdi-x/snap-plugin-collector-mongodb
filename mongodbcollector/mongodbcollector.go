@@ -34,10 +34,10 @@ const (
 	// Plugin plugin name
 	Plugin = "mongodb"
 	// Version of plugin
-	Version = 3
+	Version = 4
 
-	nsMetricPostion = 2
-	nsSubMetric     = 3
+	nsMetricPosition = 2
+	nsSubMetric      = 3
 )
 
 // MongoDBCollector type
