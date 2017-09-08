@@ -6,11 +6,11 @@ go:
 - 1.7.x
 - 1.8.x
 addons:
-apt:
-  sources:
-  - mongodb-3.2-trusty
-  packages:
-  - mongodb-org-server
+  apt:
+    sources:
+    - mongodb-3.2-trusty
+    packages:
+    - mongodb-org-server
 services:
 - mongodb
 env:
