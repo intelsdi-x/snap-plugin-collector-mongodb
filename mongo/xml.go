@@ -214,68 +214,68 @@ type BlockManager struct {
 
 // Cache contains stats about Cache
 type Cache struct {
-	BytesBelongingToPageImagesInTheCache               int `json:"bytes belonging to page images in the cache" bson:"bytes belonging to page images in the cache"`
-	BytesCurrentlyInTheCache                           int `json:"bytes currently in the cache" bson:"bytes currently in the cache"`
-	BytesNotBelongingToPageImagesInTheCache            int `json:"bytes not belonging to page images in the cache" bson:"bytes not belonging to page images in the cache"`
-	BytesReadIntoCache                                 int `json:"bytes read into cache" bson:"bytes read into cache"`
-	BytesWrittenFromCache                              int `json:"bytes written from cache" bson:"bytes written from cache"`
-	CheckpointBlockedPageEviction                      int `json:"checkpoint blocked page eviction" bson:"checkpoint blocked page eviction"`
-	EvictionCallsToGetAPage                            int `json:"eviction calls to get a page" bson:"eviction calls to get a page"`
-	EvictionCallsToGetAPageFoundQueueEmpty             int `json:"eviction calls to get a page found queue empty" bson:"eviction calls to get a page found queue empty"`
-	EvictionCallsToGetAPageFoundQueueEmptyAfterLocking int `json:"eviction calls to get a page found queue empty after locking" bson:"eviction calls to get a page found queue empty after locking"`
-	EvictionCurrentlyOperatingInAggressiveMode         int `json:"eviction currently operating in aggressive mode" bson:"eviction currently operating in aggressive mode"`
-	EvictionEmptyScore                                 int `json:"eviction empty score" bson:"eviction empty score"`
-	EvictionServerCandidateQueueEmptyWhenToppingUp     int `json:"eviction server candidate queue empty when topping up" bson:"eviction server candidate queue empty when topping up"`
-	EvictionServerCandidateQueueNotEmptyWhenToppingUp  int `json:"eviction server candidate queue not empty when topping up" bson:"eviction server candidate queue not empty when topping up"`
-	EvictionServerEvictingPages                        int `json:"eviction server evicting pages" bson:"eviction server evicting pages"`
+	BytesBelongingToPageImagesInTheCache                       int `json:"bytes belonging to page images in the cache" bson:"bytes belonging to page images in the cache"`
+	BytesCurrentlyInTheCache                                   int `json:"bytes currently in the cache" bson:"bytes currently in the cache"`
+	BytesNotBelongingToPageImagesInTheCache                    int `json:"bytes not belonging to page images in the cache" bson:"bytes not belonging to page images in the cache"`
+	BytesReadIntoCache                                         int `json:"bytes read into cache" bson:"bytes read into cache"`
+	BytesWrittenFromCache                                      int `json:"bytes written from cache" bson:"bytes written from cache"`
+	CheckpointBlockedPageEviction                              int `json:"checkpoint blocked page eviction" bson:"checkpoint blocked page eviction"`
+	EvictionCallsToGetAPage                                    int `json:"eviction calls to get a page" bson:"eviction calls to get a page"`
+	EvictionCallsToGetAPageFoundQueueEmpty                     int `json:"eviction calls to get a page found queue empty" bson:"eviction calls to get a page found queue empty"`
+	EvictionCallsToGetAPageFoundQueueEmptyAfterLocking         int `json:"eviction calls to get a page found queue empty after locking" bson:"eviction calls to get a page found queue empty after locking"`
+	EvictionCurrentlyOperatingInAggressiveMode                 int `json:"eviction currently operating in aggressive mode" bson:"eviction currently operating in aggressive mode"`
+	EvictionEmptyScore                                         int `json:"eviction empty score" bson:"eviction empty score"`
+	EvictionServerCandidateQueueEmptyWhenToppingUp             int `json:"eviction server candidate queue empty when topping up" bson:"eviction server candidate queue empty when topping up"`
+	EvictionServerCandidateQueueNotEmptyWhenToppingUp          int `json:"eviction server candidate queue not empty when topping up" bson:"eviction server candidate queue not empty when topping up"`
+	EvictionServerEvictingPages                                int `json:"eviction server evicting pages" bson:"eviction server evicting pages"`
 	EvictionServerSleptBecauseWeDidNotMakeProgressWithEviction int `json:"eviction server slept because we did not make progress with eviction" bson:"eviction server slept because we did not make progress with eviction"`
-	EvictionServerUnableToReachEvictionGoal             int `json:"eviction server unable to reach eviction goal" bson:"eviction server unable to reach eviction goal"`
-	EvictionState                                       int `json:"eviction state" bson:"eviction state"`
-	EvictionWalksAbandoned                              int `json:"eviction walks abandoned" bson:"eviction walks abandoned"`
-	EvictionWorkerThreadEvictingPages                   int `json:"eviction worker thread evicting pages" bson:"eviction worker thread evicting pages"`
-	FailedEvictionOfPagesThatExceededTheInMemoryMaximum int `json:"failed eviction of pages that exceeded the in-memory maximum" bson:"failed eviction of pages that exceeded the in-memory maximum"`
-	FilesWithActiveEvictionWalks                        int `json:"files with active eviction walks" bson:"files with active eviction walks"`
-	FilesWithNewEvictionWalksStarted                    int `json:"files with new eviction walks started" bson:"files with new eviction walks started"`
-	HazardPointerBlockedPageEviction                    int `json:"hazard pointer blocked page eviction" bson:"hazard pointer blocked page eviction"`
-	HazardPointerCheckCalls                             int `json:"hazard pointer check calls" bson:"hazard pointer check calls"`
-	HazardPointerCheckEntriesWalked                     int `json:"hazard pointer check entries walked" bson:"hazard pointer check entries walked"`
-	HazardPointerMaximumArrayLength                     int `json:"hazard pointer maximum array length" bson:"hazard pointer maximum array length"`
-	InMemoryPagePassedCriteriaToBeSplit                 int `json:"in-memory page passed criteria to be split" bson:"in-memory page passed criteria to be split"`
-	InMemoryPageSplits                                  int `json:"in-memory page splits" bson:"in-memory page splits"`
-	InternalPagesEvicted                                int `json:"internal pages evicted" bson:"internal pages evicted"`
-	InternalPagesSplitDuringEviction                    int `json:"internal pages split during eviction" bson:"internal pages split during eviction"`
-	LeafPagesSplitDuringEviction                        int `json:"leaf pages split during eviction" bson:"leaf pages split during eviction"`
-	LookasideTableInsertCalls                           int `json:"lookaside table insert calls" bson:"lookaside table insert calls"`
-	LookasideTableRemoveCalls                           int `json:"lookaside table remove calls" bson:"lookaside table remove calls"`
-	MaximumBytesConfigured                              int `json:"maximum bytes configured" bson:"maximum bytes configured"`
-	MaximumPageSizeAtEviction                           int `json:"maximum page size at eviction" bson:"maximum page size at eviction"`
-	ModifiedPagesEvicted                                int `json:"modified pages evicted" bson:"modified pages evicted"`
-	ModifiedPagesEvictedByApplicationThreads            int `json:"modified pages evicted by application threads" bson:"modified pages evicted by application threads"`
-	OverflowPagesReadIntoCache                          int `json:"overflow pages read into cache" bson:"overflow pages read into cache"`
-	OverflowValuesCachedInMemory                        int `json:"overflow values cached in memory" bson:"overflow values cached in memory"`
-	PageSplitDuringEvictionDeepenedTheTree              int `json:"page split during eviction deepened the tree" bson:"page split during eviction deepened the tree"`
-	PageWrittenRequiringLookasideRecords                int `json:"page written requiring lookaside records" bson:"page written requiring lookaside records"`
-	PagesCurrentlyHeldInTheCache                        int `json:"pages currently held in the cache" bson:"pages currently held in the cache"`
-	PagesEvictedBecauseTheyExceededTheInMemoryMaximum   int `json:"pages evicted because they exceeded the in-memory maximum" bson:"pages evicted because they exceeded the in-memory maximum"`
-	PagesEvictedBecauseTheyHadChainsOfDeletedItems      int `json:"pages evicted because they had chains of deleted items" bson:"pages evicted because they had chains of deleted items"`
-	PagesEvictedByApplicationThreads                    int `json:"pages evicted by application threads" bson:"pages evicted by application threads"`
-	PagesQueuedForEviction                              int `json:"pages queued for eviction" bson:"pages queued for eviction"`
-	PagesQueuedForUrgentEviction                        int `json:"pages queued for urgent eviction" bson:"pages queued for urgent eviction"`
-	PagesQueuedForUrgentEvictionDuringWalk              int `json:"pages queued for urgent eviction during walk" bson:"pages queued for urgent eviction during walk"`
-	PagesReadIntoCache                                  int `json:"pages read into cache" bson:"pages read into cache"`
-	PagesReadIntoCacheRequiringLookasideEntries         int `json:"pages read into cache requiring lookaside entries" bson:"pages read into cache requiring lookaside entries"`
-	PagesRequestedFromTheCache                          int `json:"pages requested from the cache" bson:"pages requested from the cache"`
-	PagesSeenByEvictionWalk                             int `json:"pages seen by eviction walk" bson:"pages seen by eviction walk"`
-	PagesSelectedForEvictionUnableToBeEvicted           int `json:"pages selected for eviction unable to be evicted" bson:"pages selected for eviction unable to be evicted"`
-	PagesWalkedForEviction                              int `json:"pages walked for eviction" bson:"pages walked for eviction"`
-	PagesWrittenFromCache                               int `json:"pages written from cache" bson:"pages written from cache"`
-	PagesWrittenRequiringInMemoryRestoration            int `json:"pages written requiring in-memory restoration" bson:"pages written requiring in-memory restoration"`
-	PercentageOverhead                                  int `json:"percentage overhead" bson:"percentage overhead"`
-	TrackedBytesBelongingToInternalPagesInTheCache      int `json:"tracked bytes belonging to internal pages in the cache" bson:"tracked bytes belonging to internal pages in the cache"`
-	TrackedBytesBelongingToLeafPagesInTheCache          int `json:"tracked bytes belonging to leaf pages in the cache" bson:"tracked bytes belonging to leaf pages in the cache"`
-	TrackedDirtyBytesInTheCache                         int `json:"tracked dirty bytes in the cache" bson:"tracked dirty bytes in the cache"`
-	TrackedDirtyPagesInTheCache                         int `json:"tracked dirty pages in the cache" bson:"tracked dirty pages in the cache"`
-	UnmodifiedPagesEvicted                              int `json:"unmodified pages evicted" bson:"unmodified pages evicted"`
+	EvictionServerUnableToReachEvictionGoal                    int `json:"eviction server unable to reach eviction goal" bson:"eviction server unable to reach eviction goal"`
+	EvictionState                                              int `json:"eviction state" bson:"eviction state"`
+	EvictionWalksAbandoned                                     int `json:"eviction walks abandoned" bson:"eviction walks abandoned"`
+	EvictionWorkerThreadEvictingPages                          int `json:"eviction worker thread evicting pages" bson:"eviction worker thread evicting pages"`
+	FailedEvictionOfPagesThatExceededTheInMemoryMaximum        int `json:"failed eviction of pages that exceeded the in-memory maximum" bson:"failed eviction of pages that exceeded the in-memory maximum"`
+	FilesWithActiveEvictionWalks                               int `json:"files with active eviction walks" bson:"files with active eviction walks"`
+	FilesWithNewEvictionWalksStarted                           int `json:"files with new eviction walks started" bson:"files with new eviction walks started"`
+	HazardPointerBlockedPageEviction                           int `json:"hazard pointer blocked page eviction" bson:"hazard pointer blocked page eviction"`
+	HazardPointerCheckCalls                                    int `json:"hazard pointer check calls" bson:"hazard pointer check calls"`
+	HazardPointerCheckEntriesWalked                            int `json:"hazard pointer check entries walked" bson:"hazard pointer check entries walked"`
+	HazardPointerMaximumArrayLength                            int `json:"hazard pointer maximum array length" bson:"hazard pointer maximum array length"`
+	InMemoryPagePassedCriteriaToBeSplit                        int `json:"in-memory page passed criteria to be split" bson:"in-memory page passed criteria to be split"`
+	InMemoryPageSplits                                         int `json:"in-memory page splits" bson:"in-memory page splits"`
+	InternalPagesEvicted                                       int `json:"internal pages evicted" bson:"internal pages evicted"`
+	InternalPagesSplitDuringEviction                           int `json:"internal pages split during eviction" bson:"internal pages split during eviction"`
+	LeafPagesSplitDuringEviction                               int `json:"leaf pages split during eviction" bson:"leaf pages split during eviction"`
+	LookasideTableInsertCalls                                  int `json:"lookaside table insert calls" bson:"lookaside table insert calls"`
+	LookasideTableRemoveCalls                                  int `json:"lookaside table remove calls" bson:"lookaside table remove calls"`
+	MaximumBytesConfigured                                     int `json:"maximum bytes configured" bson:"maximum bytes configured"`
+	MaximumPageSizeAtEviction                                  int `json:"maximum page size at eviction" bson:"maximum page size at eviction"`
+	ModifiedPagesEvicted                                       int `json:"modified pages evicted" bson:"modified pages evicted"`
+	ModifiedPagesEvictedByApplicationThreads                   int `json:"modified pages evicted by application threads" bson:"modified pages evicted by application threads"`
+	OverflowPagesReadIntoCache                                 int `json:"overflow pages read into cache" bson:"overflow pages read into cache"`
+	OverflowValuesCachedInMemory                               int `json:"overflow values cached in memory" bson:"overflow values cached in memory"`
+	PageSplitDuringEvictionDeepenedTheTree                     int `json:"page split during eviction deepened the tree" bson:"page split during eviction deepened the tree"`
+	PageWrittenRequiringLookasideRecords                       int `json:"page written requiring lookaside records" bson:"page written requiring lookaside records"`
+	PagesCurrentlyHeldInTheCache                               int `json:"pages currently held in the cache" bson:"pages currently held in the cache"`
+	PagesEvictedBecauseTheyExceededTheInMemoryMaximum          int `json:"pages evicted because they exceeded the in-memory maximum" bson:"pages evicted because they exceeded the in-memory maximum"`
+	PagesEvictedBecauseTheyHadChainsOfDeletedItems             int `json:"pages evicted because they had chains of deleted items" bson:"pages evicted because they had chains of deleted items"`
+	PagesEvictedByApplicationThreads                           int `json:"pages evicted by application threads" bson:"pages evicted by application threads"`
+	PagesQueuedForEviction                                     int `json:"pages queued for eviction" bson:"pages queued for eviction"`
+	PagesQueuedForUrgentEviction                               int `json:"pages queued for urgent eviction" bson:"pages queued for urgent eviction"`
+	PagesQueuedForUrgentEvictionDuringWalk                     int `json:"pages queued for urgent eviction during walk" bson:"pages queued for urgent eviction during walk"`
+	PagesReadIntoCache                                         int `json:"pages read into cache" bson:"pages read into cache"`
+	PagesReadIntoCacheRequiringLookasideEntries                int `json:"pages read into cache requiring lookaside entries" bson:"pages read into cache requiring lookaside entries"`
+	PagesRequestedFromTheCache                                 int `json:"pages requested from the cache" bson:"pages requested from the cache"`
+	PagesSeenByEvictionWalk                                    int `json:"pages seen by eviction walk" bson:"pages seen by eviction walk"`
+	PagesSelectedForEvictionUnableToBeEvicted                  int `json:"pages selected for eviction unable to be evicted" bson:"pages selected for eviction unable to be evicted"`
+	PagesWalkedForEviction                                     int `json:"pages walked for eviction" bson:"pages walked for eviction"`
+	PagesWrittenFromCache                                      int `json:"pages written from cache" bson:"pages written from cache"`
+	PagesWrittenRequiringInMemoryRestoration                   int `json:"pages written requiring in-memory restoration" bson:"pages written requiring in-memory restoration"`
+	PercentageOverhead                                         int `json:"percentage overhead" bson:"percentage overhead"`
+	TrackedBytesBelongingToInternalPagesInTheCache             int `json:"tracked bytes belonging to internal pages in the cache" bson:"tracked bytes belonging to internal pages in the cache"`
+	TrackedBytesBelongingToLeafPagesInTheCache                 int `json:"tracked bytes belonging to leaf pages in the cache" bson:"tracked bytes belonging to leaf pages in the cache"`
+	TrackedDirtyBytesInTheCache                                int `json:"tracked dirty bytes in the cache" bson:"tracked dirty bytes in the cache"`
+	TrackedDirtyPagesInTheCache                                int `json:"tracked dirty pages in the cache" bson:"tracked dirty pages in the cache"`
+	UnmodifiedPagesEvicted                                     int `json:"unmodified pages evicted" bson:"unmodified pages evicted"`
 }
 
 // Connection contains stats about Connection
